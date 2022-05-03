@@ -1,0 +1,951 @@
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Gobo</title>
+
+    <style>
+      @font-face {
+        font-family: roboto;
+        font-style: normal;
+        font-weight: 400;
+        src: local("Roboto"),
+          url(https://5e.tools/fonts/Roboto-regular.ttf) format("truetype");
+      }
+      @font-face {
+        font-family: glyphicons halflings;
+        font-style: normal;
+        font-weight: 400;
+        src: local("glyphicons-halflings-regular"),
+          url(https://5e.tools/fonts/glyphicons-halflings-regular.ttf)
+            format("truetype");
+      }
+      @font-face {
+        font-family: blambot casual;
+        src: local("Blambot-Casual"),
+          url(https://5e.tools/fonts/Blambot-Casual-Regular.ttf)
+            format("truetype");
+      }
+      .roller {
+        color: #337ab7;
+        cursor: pointer;
+      }
+      @media (max-width: 780px) {
+        .help--hover {
+          cursor: default !important;
+          text-decoration: none !important;
+        }
+      }
+      body {
+        min-height: 100%;
+        position: relative;
+      }
+      main {
+        padding: 10px 15px;
+      }
+      * {
+        scrollbar-width: thin;
+      }
+      ::-webkit-scrollbar {
+        width: 9px;
+        height: 9px;
+      }
+      ::-webkit-scrollbar-track {
+        background: 0 0;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbcbcb;
+      }
+      body {
+        scrollbar-width: auto;
+      }
+      body::-webkit-scrollbar {
+        width: 15px;
+      }
+      .row {
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .b-0 {
+        border: 0 !important;
+      }
+      .b-1 {
+        border-width: 0.25rem !important;
+      }
+      .b-2 {
+        border-width: 0.5rem !important;
+      }
+      .b-3 {
+        border-width: 1rem !important;
+      }
+      .b-4 {
+        border-width: 1.5rem !important;
+      }
+      .b-5 {
+        border-width: 3rem !important;
+      }
+      .b-1p {
+        border: 1px solid #ccc !important;
+      }
+      .by-0 {
+        border-top-width: 0 !important;
+        border-bottom-width: 0 !important;
+      }
+      .by-1 {
+        border-top-width: 0.25rem !important;
+        border-bottom-width: 0.25rem !important;
+      }
+      .by-2 {
+        border-top-width: 0.5rem !important;
+        border-bottom-width: 0.5rem !important;
+      }
+      .by-3 {
+        border-top-width: 1rem !important;
+        border-bottom-width: 1rem !important;
+      }
+      .by-4 {
+        border-top-width: 1.5rem !important;
+        border-bottom-width: 1.5rem !important;
+      }
+      .by-5 {
+        border-top-width: 3rem !important;
+        border-bottom-width: 3rem !important;
+      }
+      .m-0 {
+        margin: 0 !important;
+      }
+      .m-1 {
+        margin: 0.25rem !important;
+      }
+      .m-2 {
+        margin: 0.5rem !important;
+      }
+      .m-3 {
+        margin: 1rem !important;
+      }
+      .m-4 {
+        margin: 1.5rem !important;
+      }
+      .m-5 {
+        margin: 3rem !important;
+      }
+      .ml-0 {
+        margin-left: 0 !important;
+      }
+      .ml-1 {
+        margin-left: 0.25rem !important;
+      }
+      .ml-2 {
+        margin-left: 0.5rem !important;
+      }
+      .ml-3 {
+        margin-left: 1rem !important;
+      }
+      .ml-4 {
+        margin-left: 1.5rem !important;
+      }
+      .ml-5 {
+        margin-left: 3rem !important;
+      }
+      .p-0 {
+        padding: 0 !important;
+      }
+      .p-1 {
+        padding: 0.25rem !important;
+      }
+      .p-2 {
+        padding: 0.5rem !important;
+      }
+      .p-3 {
+        padding: 1rem !important;
+      }
+      .p-4 {
+        padding: 1.5rem !important;
+      }
+      .p-5 {
+        padding: 3rem !important;
+      }
+      .p-1p {
+        padding: 1px !important;
+      }
+      i > i {
+        font-style: initial;
+      }
+      .underline {
+        text-decoration: underline !important;
+      }
+      .help {
+        cursor: help !important;
+        text-decoration: underline !important;
+        text-decoration-style: dotted !important;
+      }
+      .help:active,
+      .help:focus,
+      .help:hover {
+        text-decoration: underline !important;
+        text-decoration-style: dotted !important;
+      }
+      .help-subtle {
+        cursor: help !important;
+      }
+      .text-right {
+        text-align: right !important;
+      }
+      .text-center {
+        text-align: center !important;
+      }
+      .copyable {
+        cursor: copy !important;
+      }
+      .h-initial {
+        height: initial !important;
+      }
+      .h-50 {
+        height: 50% !important;
+      }
+      .h-100 {
+        height: 100% !important;
+      }
+      .h-100h {
+        height: 100vh !important;
+      }
+      .h-20p {
+        height: 20px !important;
+      }
+      .h-25p {
+        height: 25px !important;
+      }
+      .h-21p {
+        height: 21px !important;
+      }
+      .h-27p {
+        height: 27px !important;
+      }
+      .relative {
+        position: relative !important;
+      }
+      .inline {
+        display: inline !important;
+      }
+      .ve-inline-flex {
+        display: inline-flex !important;
+      }
+      .ve-flex {
+        display: flex !important;
+      }
+      .ve-flex-v-center {
+        display: flex !important;
+        align-items: center !important;
+      }
+      .ve-inline-flex-v-center {
+        display: inline-flex !important;
+        align-items: center !important;
+      }
+      .ve-flex-v-baseline {
+        display: flex !important;
+        align-items: baseline !important;
+      }
+      .ve-flex-h-center {
+        display: flex !important;
+        justify-content: center !important;
+      }
+      .ve-flex-h-right {
+        display: flex !important;
+        justify-content: flex-end !important;
+      }
+      .ve-flex-inline-v-center {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .ve-flex-1 {
+        flex: 1 !important;
+      }
+      .ve-flex-2 {
+        flex: 2 !important;
+      }
+      .ve-flex-3 {
+        flex: 3 !important;
+      }
+      .ve-flex-4 {
+        flex: 4 !important;
+      }
+      .ve-flex-5 {
+        flex: 5 !important;
+      }
+      @keyframes rd__spin {
+        from {
+          transform: rotate(0);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .rd__b p {
+        margin-bottom: 5px;
+      }
+      .rd__b--0,
+      .rd__b--1,
+      .rd__b--2,
+      .rd__b--3,
+      .rd__b--4 {
+        margin-bottom: 5px;
+      }
+      .rd__b--0:last-child,
+      .rd__b--1:last-child,
+      .rd__b--2:last-child,
+      .rd__b--3:last-child,
+      .rd__b--4:last-child {
+        margin-bottom: 0;
+      }
+      .rd__b--0 > :last-child,
+      .rd__b--1 > :last-child,
+      .rd__b--2 > :last-child,
+      .rd__b--3 > :last-child,
+      .rd__b--4 > :last-child {
+        margin-bottom: 0;
+      }
+      .rd__title-link {
+        opacity: 0.3;
+        font-size: 12px;
+        font-weight: 400;
+      }
+      .rd__wrp-image {
+        margin: 5px auto 0;
+        text-align: center;
+      }
+      .rd__image {
+        max-width: 100%;
+        max-height: 60vh;
+        cursor: zoom-in;
+      }
+      .rd__image-title {
+        width: 100%;
+        text-align: center;
+        font-style: italic;
+        margin-top: 3px;
+      }
+      .rd__image-title-inner {
+        display: inline-block;
+        text-decoration: underline;
+        margin: 2px 0;
+      }
+      .rd__h {
+        margin: 0;
+        line-height: inherit;
+      }
+      .rd__h--0 {
+        color: #822000;
+        font-family: times new roman, serif;
+        font-variant: small-caps;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.8em;
+      }
+      .rd__h--1 {
+        color: #822000;
+        font-family: times new roman, serif;
+        font-variant: small-caps;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.5em;
+        border-bottom: 1px solid #822000;
+        margin: 0 0 0.2em;
+      }
+      .rd__h--2 {
+        color: #822000;
+        font-family: times new roman, serif;
+        font-variant: small-caps;
+        font-weight: 500;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.35em;
+      }
+      .rd__h--3 {
+        font-weight: 700;
+        font-style: italic;
+      }
+      .rd__h--4 {
+        font-style: italic;
+      }
+      .rd__b--3 > p,
+      .rd__b--4 > p {
+        text-indent: 0.7em;
+        margin-bottom: 0;
+      }
+      .rd__b--3 > p:first-of-type,
+      .rd__b--4 > p:first-of-type {
+        display: inline;
+      }
+      .rd__b-data {
+        box-shadow: 0 0 4px 0 #988e7c;
+        border: 1px solid #656565;
+        background-color: rgba(156, 150, 120, 0.1);
+      }
+      .rd__table {
+        width: 100%;
+      }
+      .rd__stats-name-page {
+        font-family: convergence, Arial, sans-serif;
+        font-size: 12px;
+        color: #333;
+        font-weight: 100;
+      }
+      .rd-ability-icon {
+        max-width: 100px;
+      }
+      td > .rd__b:last-child {
+        margin-bottom: 0;
+      }
+      @keyframes kf-fade-in {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes kf-pop-in {
+        from {
+          transform: scale(0);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+      .sourceMM {
+        color: green !important;
+        border-color: green !important;
+        text-decoration-color: green !important;
+      }
+      .page__header {
+        padding: 0 15px 1px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.475);
+        color: #fff;
+        background-color: #006bc4;
+        min-height: 0;
+        flex-shrink: 0;
+      }
+      .page__title {
+        margin-right: 10px;
+        display: inline;
+      }
+      .page__title::after {
+        color: #e0e0e0;
+        content: ".";
+      }
+      .btn-stats-name {
+        vertical-align: top;
+        height: 24px;
+        width: 24px;
+      }
+      .wrp-stats-table {
+        overflow-x: hidden;
+        overflow-y: auto;
+        border-top: 1px solid #e69a28;
+        border-bottom: 1px solid #e69a28;
+        transform: translateZ(0);
+        flex-shrink: 1;
+      }
+      .wrp-stats-table--book {
+        border-top-color: silver;
+        border-bottom-color: silver;
+      }
+      @media (max-width: 991px) {
+        .wrp-stats-table {
+          overflow-y: initial;
+        }
+      }
+      .rnd-name {
+        position: relative;
+        font-size: 1.8em;
+        font-family: times new roman, serif;
+        font-variant: small-caps;
+        font-weight: 500;
+        padding-left: 0.2em !important;
+      }
+      .rnd-name div.name-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      .monster .rnd-name .source {
+        position: relative;
+        margin-right: 0.2em;
+      }
+      .stats {
+        font-family: convergence, Arial, sans-serif;
+        width: 100%;
+        font-size: 12.6px;
+        table-layout: fixed;
+        overflow-wrap: break-word;
+      }
+      .stats:last-child {
+        margin-bottom: 0;
+      }
+      .stats.monster {
+        background-size: 100% auto;
+        background: url(https://5e.tools/img/bestiary/stat-block-top-texture.png) no-repeat, repeat top center,
+          #fdf1dc;
+      }
+      td,
+      th {
+        padding: 1px 0.3em;
+      }
+      .stats-name {
+        font-size: unset;
+        line-height: unset;
+        color: #822000;
+      }
+      .stats table {
+        width: 100%;
+        margin-bottom: 5px;
+      }
+      th.border {
+        height: 4px;
+      }
+      .wrp-stats-table th.border {
+        height: 3px;
+      }
+      td.divider div {
+        background: #822000;
+        height: 2px;
+        margin: 6px 0;
+      }
+      .stats span.name {
+        font-weight: 700;
+      }
+      .stats span.name {
+        font-weight: 700;
+      }
+      tr.text > td {
+        padding-bottom: 0.7em;
+      }
+      .mon__btn-reset-cr,
+      .mon__btn-scale-cr {
+        padding: 0 5px;
+        font-size: 10px;
+      }
+      .mon__ability-names th {
+        text-align: center;
+        font-weight: 700;
+        color: inherit;
+      }
+      .mon__ability-scores {
+        text-align: center;
+        width: 16%;
+      }
+      .mon__wrp-avoid-token,
+      .mon__wrp-size-type-align--token {
+        max-width: calc(100% - 11rem);
+      }
+      .mon__sect-header-inner {
+        display: block;
+        margin-top: -0.3rem;
+        margin-bottom: -0.3rem;
+        font-weight: 100;
+        color: #822000;
+        font-size: 18px;
+        line-height: 23px;
+        font-family: times new roman, serif;
+        font-variant: small-caps;
+      }
+      .mon__sect-row-inner {
+        padding-top: 0.5rem !important;
+      }
+      .mon__sect-row-inner > :last-of-type {
+        margin-bottom: 0.5rem !important;
+      }
+      .mon__stat-header-underline {
+        border-bottom: 1px solid #822000;
+        vertical-align: bottom !important;
+        padding-left: 0.2rem;
+      }
+      .mon__wrp-token {
+        display: block;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0.5rem;
+        width: auto;
+        max-width: 11rem;
+        height: auto;
+        transition: opacity 34ms, max-width 34ms, right 34ms;
+      }
+      .mon__wrp-token:hover {
+        max-width: 100%;
+        right: 0;
+        opacity: 1 !important;
+        transition: opacity 34ms, max-width 34ms, right 34ms;
+      }
+      .mon__token {
+        width: 100%;
+        height: 100%;
+      }
+      tr th.mon__name--token {
+        padding-right: 12rem;
+      }
+      tr.action .rd__b--3 {
+        margin-bottom: 1rem;
+      }
+      .stats--book-large {
+        border-radius: 0;
+        line-height: 1.7;
+        font-size: 1em;
+      }
+      .stats--book-large .rd__h--0 {
+        font-size: 2.5em;
+      }
+      .stats--book-large .rd__h--1 {
+        font-size: 1.9em;
+      }
+      .stats--book-large .rd__h--2 {
+        font-size: 1.6em;
+      }
+      .stats--book-large .rd__b--3,
+      .stats--book-large p,
+      .stats--book-large table {
+        margin: 0 0 15px;
+        text-indent: 0;
+      }
+      .stats--book-large .rd__spc-inline-post {
+        width: 100%;
+        height: 15px;
+      }
+      .stats--book-large .rd__spc-inline-post:last-child {
+        height: 0;
+      }
+      .stats {
+        background: #fdf1dc;
+      }
+      .stats--book {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+        font-family: Roboto, Helvetica, sans-serif;
+        background: #fff;
+      }
+      .stats--book ::selection {
+        background: #242527;
+        color: #fff;
+        text-shadow: none;
+      }
+      th.border {
+        background: #e69a28;
+      }
+      .stats--book th.border {
+        background: silver;
+      }
+      .edge__body {
+        overflow: hidden !important;
+      }
+      .edge__title {
+        font-size: 72px;
+      }
+      .edge__link {
+        color: #fff !important;
+        text-decoration: underline;
+      }
+      @media print {
+        @page {
+          margin: 10mm 15mm;
+        }
+        body {
+          color: #000 !important;
+          overflow: visible !important;
+          background: 0 0 !important;
+          font-size: 10px !important;
+        }
+        header {
+          display: none !important;
+        }
+        strong {
+          font-weight: 600;
+        }
+        a[href]::after {
+          content: none !important;
+        }
+        .help,
+        .help--hover {
+          text-decoration: none !important;
+        }
+        .roller,
+        a {
+          color: #000 !important;
+        }
+        .stats,
+        .stats.monster {
+          background: 0 0 !important;
+        }
+        .stats th,
+        .stats-source {
+          color: #000 !important;
+        }
+        .wrp-stats-table th.border,
+        th.border {
+          background: #000 !important;
+          height: 1px !important;
+        }
+        td.divider div {
+          height: 1px !important;
+          background: #000 !important;
+          margin: 0 !important;
+        }
+        .stats td,
+        .stats th {
+          padding: 1px 2px !important;
+        }
+        .stats--book-large .rd__b--3,
+        .stats--book-large p,
+        .stats--book-large table {
+          margin: 0 0 3px !important;
+        }
+        .stats--book {
+          box-shadow: none !important;
+        }
+        .btn-stats-name {
+          display: none !important;
+        }
+        .wrp-stats-table {
+          border-top: 0 !important;
+          border-bottom: 0 !important;
+        }
+        .mon__btn-reset-cr,
+        .mon__btn-scale-cr {
+          display: none !important;
+        }
+        .mon__name--token {
+          padding-right: 0 !important;
+        }
+        .mon__stat-header-underline {
+          border-bottom: 1px solid #000 !important;
+          color: #000 !important;
+        }
+      }
+      @font-face {
+        font-family: convergence;
+        font-style: normal;
+        font-weight: 400;
+        src: local("Convergence-Regular"),
+          url(https://5e.tools/fonts/Convergence-Regular.ttf) format("truetype");
+      }
+      @font-face {
+        font-family: roboto;
+        font-style: normal;
+        font-weight: 400;
+        src: local("Roboto"),
+          url(https://5e.tools/fonts/Roboto-regular.ttf) format("truetype");
+      }
+      @font-face {
+        font-family: glyphicons halflings;
+        font-style: normal;
+        font-weight: 400;
+        src: local("glyphicons-halflings-regular"),
+          url(https://5e.tools/fonts/glyphicons-halflings-regular.ttf)
+            format("truetype");
+      }
+      @font-face {
+        font-family: blambot casual;
+        src: local("Blambot-Casual"),
+          url(https://5e.tools/fonts/Blambot-Casual-Regular.ttf)
+            format("truetype");
+      }
+      @keyframes kf-fade-out {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+<body>
+	<table id="pagecontent" class="stats monster" data-proficiency-dice-mode="bonus" style="max-width: 30rem">
+	    <tr>
+	        <th class="border" colspan="6"></th>
+	    </tr>
+	    <tr>
+	        <th class="rnd-name mon__name--token" colspan="6" data-page="bestiary.html" data-source="MM" data-hash="lion_mm"
+	            data-extension="{}">
+	            <div class="name-inner">
+	                <div class="ve-flex-v-center">
+	                    <h1 class="stats-name copyable m-0" onmousedown="event.preventDefault()"
+	                        onclick="Renderer.utils._pHandleNameClick(this)">Gobo</h1>
+	                </div>
+	                <!-- <div class="stats-source ve-flex-v-baseline">
+	                    <a href="book.html#mm,page:331" class="help-subtle sourceMM" title="Monster Manual">MM</a>
+	
+	                    <a href="book.html#mm,page:331" class="rd__stats-name-page ml-1" title="Page 331">p331</a>
+	
+	
+	                </div> -->
+	            </div>
+	        </th>
+	    </tr>
+	    <tr>
+	        <td colspan="6">
+	            <div class="mon__wrp-size-type-align--token"><i>Large Fiend, Lawful Good</i></div>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td class="divider" colspan="6">
+	            <div></div>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td colspan="6">
+	            <div class="mon__wrp-avoid-token"><strong>Armor Class</strong> 12</div>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td colspan="6">
+	            <div class="mon__wrp-avoid-token"><strong>Hit Points</strong> 10 (<span class="roller render-roller"
+	                    title="Hit Points. Click to roll. SHIFT/CTRL to roll twice." data-roll-name="Hit Points"
+	                    onmousedown="event.preventDefault()"
+	                    data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;displayText&quot;:&quot;4d10 + 4&quot;,&quot;name&quot;:&quot;Hit Points&quot;,&quot;toRoll&quot;:&quot;4d10 + 4&quot;}">4d10
+	                    + 4</span>)</div>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td colspan="6"><strong>Speed</strong> 35 ft.</td>
+	    </tr>
+	    <tr>
+	        <td class="divider" colspan="6">
+	            <div></div>
+	        </td>
+	    </tr>
+	    <tr class="mon__ability-names">
+	        <th>STR</th>
+	        <th>DEX</th>
+	        <th>CON</th>
+	        <th>INT</th>
+	        <th>WIS</th>
+	        <th>CHA</th>
+	    </tr>
+	    <tr class="mon__ability-scores">
+	        <td><span class="roller render-roller"
+	                title="Strength. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Strength" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;str&quot;},&quot;name&quot;:&quot;Strength&quot;,&quot;displayText&quot;:&quot;17 (+3)&quot;,&quot;toRoll&quot;:&quot;1d20+3&quot;,&quot;d20mod&quot;:&quot;+3&quot;}">5
+	                (-3)</span></td>
+	        <td><span class="roller render-roller"
+	                title="Dexterity. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Dexterity" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;dex&quot;},&quot;name&quot;:&quot;Dexterity&quot;,&quot;displayText&quot;:&quot;15 (+2)&quot;,&quot;toRoll&quot;:&quot;1d20+2&quot;,&quot;d20mod&quot;:&quot;+2&quot;}">0
+	                (-5)</span></td>
+	        <td><span class="roller render-roller"
+	                title="Constitution. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Constitution" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;con&quot;},&quot;name&quot;:&quot;Constitution&quot;,&quot;displayText&quot;:&quot;13 (+1)&quot;,&quot;toRoll&quot;:&quot;1d20+1&quot;,&quot;d20mod&quot;:&quot;+1&quot;}">10
+	                (+0)</span></td>
+	        <td><span class="roller render-roller"
+	                title="Intelligence. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Intelligence" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;int&quot;},&quot;name&quot;:&quot;Intelligence&quot;,&quot;displayText&quot;:&quot;3 (-4)&quot;,&quot;toRoll&quot;:&quot;1d20-4&quot;,&quot;d20mod&quot;:&quot;-4&quot;}">0
+	                (-5)</span></td>
+	        <td><span class="roller render-roller"
+	                title="Wisdom. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Wisdom" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;wis&quot;},&quot;name&quot;:&quot;Wisdom&quot;,&quot;displayText&quot;:&quot;12 (+1)&quot;,&quot;toRoll&quot;:&quot;1d20+1&quot;,&quot;d20mod&quot;:&quot;+1&quot;}">0
+	                (-5)</span></td>
+	        <td><span class="roller render-roller"
+	                title="Charisma. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                data-roll-name="Charisma" onmousedown="event.preventDefault()"
+	                data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;abilityCheck&quot;,&quot;ability&quot;:&quot;cha&quot;},&quot;name&quot;:&quot;Charisma&quot;,&quot;displayText&quot;:&quot;8 (-1)&quot;,&quot;toRoll&quot;:&quot;1d20-1&quot;,&quot;d20mod&quot;:&quot;-1&quot;}">11
+	                (+0)</span></td>
+	    </tr>
+	    <tr>
+	        <td class="divider" colspan="6">
+	            <div></div>
+	        </td>
+	    </tr>
+	    <tr>
+	        <td colspan="6"><strong>Skills</strong> <span data-mon-skill="Perception|+3"><span class="help help--hover"
+	                    onmouseover="Renderer.hover.handlePredefinedMouseOver(event, this, 81, {})"
+	                    onmousemove="Renderer.hover.handlePredefinedMouseMove(event, this)"
+	                    onmouseleave="Renderer.hover.handlePredefinedMouseLeave(event, this)"
+	                    ontouchstart="Renderer.hover.handleTouchStart(event, this)">Perception</span> <span
+	                    class="roller render-roller"
+	                    title="Perception. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                    data-roll-name="Perception" onmousedown="event.preventDefault()"
+	                    data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;skillCheck&quot;,&quot;skill&quot;:&quot;perception&quot;},&quot;displayText&quot;:&quot;+3&quot;,&quot;name&quot;:&quot;Perception&quot;,&quot;toRoll&quot;:&quot;1d20+3&quot;,&quot;d20mod&quot;:&quot;+3&quot;}"
+	                    data-roll-prof-type="d20" data-roll-prof-dice="+1d4 + 1"><span
+	                        class="rd__roller--roll-prof-bonus">+3</span><span class="rd__roller--roll-prof-dice">+1d4 +
+	                        1</span></span></span>, <span data-mon-skill="Stealth|+6"><span class="help help--hover"
+	                    onmouseover="Renderer.hover.handlePredefinedMouseOver(event, this, 82, {})"
+	                    onmousemove="Renderer.hover.handlePredefinedMouseMove(event, this)"
+	                    onmouseleave="Renderer.hover.handlePredefinedMouseLeave(event, this)"
+	                    ontouchstart="Renderer.hover.handleTouchStart(event, this)">Stealth</span> <span
+	                    class="roller render-roller"
+	                    title="Stealth. Click to roll. SHIFT to roll with advantage, CTRL to roll with disadvantage."
+	                    data-roll-name="Stealth" onmousedown="event.preventDefault()"
+	                    data-packed-dice="{&quot;type&quot;:&quot;dice&quot;,&quot;rollable&quot;:true,&quot;subType&quot;:&quot;d20&quot;,&quot;context&quot;:{&quot;type&quot;:&quot;skillCheck&quot;,&quot;skill&quot;:&quot;stealth&quot;},&quot;displayText&quot;:&quot;+6&quot;,&quot;name&quot;:&quot;Stealth&quot;,&quot;toRoll&quot;:&quot;1d20+6&quot;,&quot;d20mod&quot;:&quot;+6&quot;}"
+	                    data-roll-prof-type="d20" data-roll-prof-dice="+2d4 + 2"><span
+	                        class="rd__roller--roll-prof-bonus">+6</span><span class="rd__roller--roll-prof-dice">+2d4 +
+	                        2</span></span></span></td>
+	    </tr>
+	    <tr>
+	        <td colspan="6"><strong>Senses</strong> passive Perception 13</td>
+	    </tr>
+	    <tr>
+	        <td colspan="6"><strong>Languages</strong> —</td>
+	    </tr>
+	    <tr class="relative">
+	        <td colspan="3"><strong>Challenge</strong>
+	            <span>1 (200 XP)</span>
+	            <button id="btn-scale-cr" title="Scale Creature By CR (Highly Experimental)"
+	                class="mon__btn-scale-cr btn btn-xs btn-default"><span
+	                    class="glyphicon glyphicon-signal"></span></button>
+	            <button id="btn-reset-cr" title="Reset CR Scaling" class="mon__btn-reset-cr btn btn-xs btn-default"
+	                style="display: none;"><span class="glyphicon glyphicon-refresh"></span></button>
+	        </td>
+	        <td colspan="3" class="text-right"><strong>Proficiency Bonus</strong> +6</td>
+	    </tr>
+	    <tr></tr>
+	    <tr></tr> 
+	    <tr>
+	        <td colspan="6" class="mon__stat-header-underline">
+	            <h3 class="mon__sect-header-inner">Actions</h3>
+	        </td>
+	    </tr>
+	    <tr class="action">
+	        <td colspan="6" class="mon__sect-row-inner">
+	            <div class="rd__b  rd__b--3"><span class="rd__h rd__h--3" data-title-index="143"> <span
+	                        class="entry-title-inner">Bash.</span></span>
+	                <p><i>Melee Weapon Attack:</i> <span class="roller render-roller"><span
+	                            class="rd__roller--roll-prof-bonus">+2</span></span> to hit, reach 5 ft., one target. <i>Hit:</i>
+	                             42 (<span
+	                        class="roller render-roller">12d6
+	                        + 0</span>) Radiant damage,	                             7 Necrotic damage.</p>
+	                <div class="rd__spc-inline-post"></div>
+	            </div>
+	            <div class="rd__b  rd__b--3"><span class="rd__h rd__h--3" data-title-index="143"> <span
+	                        class="entry-title-inner">Bish.</span></span>
+	                <p><i>Melee Weapon Attack:</i> <span class="roller render-roller"><span
+	                            class="rd__roller--roll-prof-bonus">+2</span></span> to hit, reach 0 ft., one target. <i>Hit:</i>
+	                             5 Slashing damage.</p>
+	                <div class="rd__spc-inline-post"></div>
+	            </div>
+	        </td>
+	    </tr>
+	    <!-- <tr>
+	        <td colspan="6"><b>Source:</b> <i title="Monster Manual">MM</i>, page 331. Also found in <i class="help-subtle"
+	                title="Tales from the Yawning Portal">TftYP</i>; <i class="help-subtle"
+	                title="Tomb of Annihilation">ToA</i>. Available in the <span
+	                title="Systems Reference Document">SRD</span>.</td>
+	    </tr> -->
+	    <tr>
+	        <th class="border" colspan="6"></th>
+	    </tr>
+	</table>
+</body
+</html>
