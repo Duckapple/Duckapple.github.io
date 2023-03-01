@@ -1,0 +1,88 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import Link from "../components/Link.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="min-h-screen flex flex-col items-center">
+    <Header title={SITE_TITLE} />
+    <main class="md:max-w-3xl p-4">
+      <h1 class="text-3xl">Simon Green Kristensen</h1>
+      <section><h2 id="experience" class="text-2xl">Experience</h2>
+        <div class="flex flex-col pb-4">
+          <h3 id="firmnav" class="text-xl">Full-Stack Software Developer</h3>
+          <Link href="https://firmnav.com/">Firmnav</Link>
+          <span>Jul '20 &ndash; Jul '22</span>
+          <p>
+            Full-stack software development on a fin-tech SaaS TypeScript web app with Express backend and Node pipeline.
+            Responsible for benchmark visualisations, HubSpot and SalesForce CRM integrations, data layout selector, company relationship visualisations, and general platform improvements and bug fixes.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 id="teaching-assistant" class="text-xl">Teaching Assistant</h3>
+          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
+          <span>Jan &ndash; Dec '20 and Sep '22 &ndash; Jul '23</span>
+          <p>
+            I have led exercise classes, corrected assignments, and helped students
+            get through the courses.
+          </p><p>
+            I have been a teaching assistant for:
+            <ul class="flex flex-wrap">
+              <li class="flex-shrink-0" title="Jan - Jul '20">Algorithms and Data Structures,&nbsp;</li>
+              <li class="flex-shrink-0" title="Jan - Jul '20">Systematic Design of User Interfaces,&nbsp;</li>
+              <li class="flex-shrink-0" title="Seb - Dec '20">Mobile and Distributed Systems,&nbsp;</li>
+              <li class="flex-shrink-0" title="Seb - Dec '22">Algorithm Design,&nbsp;</li>
+              <li class="flex-shrink-0" title="Seb - Dec '22">Advanced Programming,&nbsp;</li>
+              <li class="flex-shrink-0" title="Jan - Jul '23">Functional Programming,&nbsp;</li>
+              <li class="flex-shrink-0" title="Jan - Jul '23">Introduction to Artificial Intelligence</li>
+            </ul>
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 id="analog-barista" class="text-xl">Volunteer Barista</h3>
+          <Link href="https://cafeanalog.dk//">Café Analog</Link>
+          <span>Sep '22 &ndash; Jul '23</span>
+          <p>
+            I volunteered as a barista at the student café at my university, both to learn more about coffee and to get to know more of my fellow students.
+          </p>
+        </div>
+      </section>
+      <section><h2 id="education" class="text-2xl">Education</h2>
+        <div class="flex flex-col">
+          <h3 class="text-xl">Msc: Computer Science (Software Analysis)</h3>
+          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
+          <span>Sep '21 &ndash; Jul '23</span>
+          <p>
+            Very cool.
+          </p>
+        </div>
+        <div class="flex flex-col">
+          <h3 class="text-xl">Bsc: Software Development</h3>
+          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
+          <span>Sep '18 &ndash; Jul '21</span>
+          <p>
+            Very cool.
+          </p>
+        </div>
+      </section>
+      <section><h2 id="projects" class="text-2xl">Projects</h2>
+        <p class="text-gray-500 dark:text-gray-400">
+          Nothing to see here...
+        </p>
+      </section>
+      <section><h2 id="hobbies" class="text-2xl">Hobbies</h2>
+        <p class="text-gray-500 dark:text-gray-400">
+          Nothing to see here...
+        </p>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>
