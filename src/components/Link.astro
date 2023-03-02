@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon';
+import { Icon } from "astro-icon";
 
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
@@ -8,18 +8,22 @@ const { href, class: className, ...props } = Astro.props;
 const { pathname, host, origin } = Astro.url;
 const { host: newHost } = new URL(href || "", origin);
 
-const isExt = host !== newHost;
+const isExt = host !== newHost; // && !newHost.includes("simon-green");
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
-
 ---
 
 <a
-    class:list={['text-blue-700 dark:text-blue-400 hover:underline', { 'underline': isActive }, className]}
-    href={href}
-    title={typeof href === "string" ? href : null}
-    rel={isExt ? "external noreferrer" : null}
-    target={isExt ? "_blank" : null}
-    {...props}
+  class:list={[
+    className,
+    "text-blue-700 dark:text-blue-400 hover:underline",
+    { "underline font-bold": isActive },
+  ]}
+  href={href}
+  title={typeof href === "string" ? href : null}
+  rel={isExt ? "external noreferrer" : null}
+  target={isExt ? "_blank" : null}
+  {...props}
 >
-    <slot />{isExt && <>&nbsp;<Icon class="h-4 inline" name="octicon:link-external-16" /></>}
+  <slot />
+  {isExt && <Icon class="h-4 inline -mt-1" name="octicon:link-external-16" />}
 </a>

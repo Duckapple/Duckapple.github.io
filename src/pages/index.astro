@@ -4,6 +4,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Link from "../components/Link.astro";
+
+const bd = Math.floor(
+  (new Date().valueOf() - new Date("1999-03-16").valueOf()) /
+    (1000 * 60 * 60 * 24 * 365)
+);
+const aside = "text-sm text-gray-500 dark:text-gray-400";
 ---
 
 <!DOCTYPE html>
@@ -12,17 +18,27 @@ import Link from "../components/Link.astro";
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="min-h-screen flex flex-col items-center">
-    <Header title={SITE_TITLE} />
+    <Header title={SITE_TITLE} class="md:max-w-3xl px-4 print:hidden" />
     <main class="md:max-w-3xl p-4">
-      <h1 class="text-3xl">Simon Green Kristensen</h1>
-      <section><h2 id="experience" class="text-2xl">Experience</h2>
+      <h1 class="text-3xl pb-2">Simon Green Kristensen</h1>
+      <p>
+        I'm a {bd} year old developer from Copenhagen, Denmark.
+        <br />
+        I love developing ways to make life easier for myself and others, which usually
+        leads me to software analysis and web development projects.
+      </p>
+      <section class="pt-6 pb-2">
+        <h2 id="experience" class="text-2xl pb-2">Experience</h2>
         <div class="flex flex-col pb-4">
           <h3 id="firmnav" class="text-xl">Full-Stack Software Developer</h3>
           <Link href="https://firmnav.com/">Firmnav</Link>
           <span>Jul '20 &ndash; Jul '22</span>
           <p>
-            Full-stack software development on a fin-tech SaaS TypeScript web app with Express backend and Node pipeline.
-            Responsible for benchmark visualisations, HubSpot and SalesForce CRM integrations, data layout selector, company relationship visualisations, and general platform improvements and bug fixes.
+            Full-stack software development on a fin-tech SaaS TypeScript web
+            app with Express backend and Node pipeline. Responsible for
+            benchmark visualisations, HubSpot and SalesForce CRM integrations,
+            data layout selector, company relationship visualisations, and
+            general platform improvements and bug fixes.
           </p>
         </div>
         <div class="flex flex-col pb-4">
@@ -30,19 +46,42 @@ import Link from "../components/Link.astro";
           <Link href="https://itu.dk/">IT University of Copenhagen</Link>
           <span>Jan &ndash; Dec '20 and Sep '22 &ndash; Jul '23</span>
           <p>
-            I have led exercise classes, corrected assignments, and helped students
-            get through the courses.
+            I have led exercise classes, corrected assignments, and helped
+            students get through the courses.
           </p><p>
             I have been a teaching assistant for:
             <ul class="flex flex-wrap">
-              <li class="flex-shrink-0" title="Jan - Jul '20">Algorithms and Data Structures,&nbsp;</li>
-              <li class="flex-shrink-0" title="Jan - Jul '20">Systematic Design of User Interfaces,&nbsp;</li>
-              <li class="flex-shrink-0" title="Seb - Dec '20">Mobile and Distributed Systems,&nbsp;</li>
-              <li class="flex-shrink-0" title="Seb - Dec '22">Algorithm Design,&nbsp;</li>
-              <li class="flex-shrink-0" title="Seb - Dec '22">Advanced Programming,&nbsp;</li>
-              <li class="flex-shrink-0" title="Jan - Jul '23">Functional Programming,&nbsp;</li>
-              <li class="flex-shrink-0" title="Jan - Jul '23">Introduction to Artificial Intelligence</li>
+              <li class="flex-shrink-0" title="Jan - Jul '20">
+                Algorithms and Data Structures,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Jan - Jul '20">
+                Systematic Design of User Interfaces,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Seb - Dec '20">
+                Mobile and Distributed Systems,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Seb - Dec '22">
+                Algorithm Design,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Seb - Dec '22">
+                Advanced Programming,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Jan - Jul '23">
+                Functional Programming,&nbsp;
+              </li>
+              <li class="flex-shrink-0" title="Jan - Jul '23">
+                Introduction to Artificial Intelligence
+              </li>
             </ul>
+          </p>
+          <p>
+            For Systematic Design of User Interfaces, I created a script for
+            validating submissions for an exercise. The script is probably
+            unused these days, and <Link
+              href="https://github.com/Duckapple/SDAB-Validator"
+            >
+              can be found here.
+            </Link>
           </p>
         </div>
         <div class="flex flex-col pb-4">
@@ -50,37 +89,189 @@ import Link from "../components/Link.astro";
           <Link href="https://cafeanalog.dk//">Café Analog</Link>
           <span>Sep '22 &ndash; Jul '23</span>
           <p>
-            I volunteered as a barista at the student café at my university, both to learn more about coffee and to get to know more of my fellow students.
+            I volunteered as a barista at the student café at my university,
+            both to learn more about coffee and to get to know more of my fellow
+            students.
           </p>
         </div>
       </section>
-      <section><h2 id="education" class="text-2xl">Education</h2>
-        <div class="flex flex-col">
+      <section class="py-2">
+        <h2 id="education" class="text-2xl pb-2">Education</h2>
+        <div class="flex flex-col pb-4">
           <h3 class="text-xl">Msc: Computer Science (Software Analysis)</h3>
-          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
+          <Link
+            href="https://en.itu.dk/Programmes/MSc-Programmes/Computer-Science"
+          >
+            IT University of Copenhagen
+          </Link>
           <span>Sep '21 &ndash; Jul '23</span>
+          <p class="pb-2">
+            During my studies, I took courses on software analysis, the art of
+            trying to find errors and problems in programs via analysis, which
+            often involves new and exciting type systems. These include Program
+            Verification, Advanced Software Analysis, and Modelling Systems
+            Languages, as well as a research project and the thesis.
+          </p>
+          <p class="pb-2">
+            The thesis itself was about providing a code completion/suggestion
+            ranking algorithm for the formal verification system Coq. The type
+            system for Coq is very expansive, which provides opportunities for
+            more specific suggestions, at the cost of low performance due to
+            having to compare types.
+          </p>
           <p>
-            Very cool.
+            Other cool courses:
+            <ul class="list-disc pl-6">
+              <li>
+                How to Make Almost Anything; had fun learning about prototyping
+                physical products and robots.
+              </li>
+              <li>
+                Game Programming; taught me C++ and matrix operations, as well
+                as Entity Component Systems and other game engine tricks.
+              </li>
+              <li>
+                Computer Systems Performance; didn't learn how to improve
+                performance, but rather how to measure performance, as well as
+                how the hardware works.
+              </li>
+            </ul>
           </p>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col pb-4">
           <h3 class="text-xl">Bsc: Software Development</h3>
-          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
+          <Link
+            href="https://en.itu.dk/Programmes/BSc-Programmes/Software-Development"
+          >
+            IT University of Copenhagen
+          </Link>
           <span>Sep '18 &ndash; Jul '21</span>
+          <p class="pb-2">
+            Learned to program in multiple languages and paradigms using
+            different design patterns. This was combined with courses on team
+            collaboration, preliminary analysis, DevOps, design, and more.
+          </p>
+          <p class="pb-2">
+            One of my favourite courses was Programs As Data. Getting into the
+            internals of compilers and interpreters was exciting, especially
+            seeing how to perform operations on the syntax tree and optimising
+            languages.
+          </p>
           <p>
-            Very cool.
+            My final project was on creating an imperative-style programming
+            language with imperative elements. Together with my mate Jonas
+            Lindenskov, we specified and implemented the language in C#,
+            creating a neat proof of concept. It is accessible on our
+            <Link href="https://github.com/jolnsigkitu">
+              GitHub Organisation
+            </Link>.
           </p>
         </div>
       </section>
-      <section><h2 id="projects" class="text-2xl">Projects</h2>
-        <p class="text-gray-500 dark:text-gray-400">
-          Nothing to see here...
-        </p>
+      <section class="py-2">
+        <h2 id="projects" class="text-2xl pb-2">Projects</h2>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="tile-game">Tile Game</h3>
+          <Link href="https://tile-game.simon-green.dev">
+            tile-game.simon-green.dev
+          </Link>
+          <p>
+            I made a web-based implementation of the board game <Link
+              href="https://boardgamegeek.com/boardgame/230802/azul"
+            >
+              Azul
+            </Link>. It is implemented with Vue and Express, using WebSockets
+            for communication.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="color-picker">Color Picker</h3>
+          <Link href="https://color-picker.simon-green.dev">
+            color-picker.simon-green.dev
+          </Link>
+          <p>
+            I wanted to be able to extract the colors used in my favourite text
+            editor theme, and therefore I made this little tool. It accepts a
+            text snippet, and attempts to extract all colors used in the text,
+            using small swatches to display them to the user.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="kat">Kat: A Kattis Helper</h3>
+          <Link href="https://github.com/Duckapple/Kat">Kat on GitHub</Link>
+          <p>
+            Kat is a tool for retrieveing, testing and submitting problems to
+            <Link href="https://open.kattis.com">Kattis</Link>, a code challenge
+            platform. It can help in getting contest data, organises your
+            solutions, and helps you in helping yourself troubleshoot your
+            solutions by running your own fuzzers.
+          </p>
+        </div>
+        <!-- Markdown Tables, Coq Suggestions -->
       </section>
-      <section><h2 id="hobbies" class="text-2xl">Hobbies</h2>
-        <p class="text-gray-500 dark:text-gray-400">
-          Nothing to see here...
-        </p>
+      <section class="py-2">
+        <h2 id="hobbies" class="text-2xl pb-2">Hobbies</h2>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="coffee">Coffee</h3>
+          <p>
+            I love the taste of coffee, I love the process of making coffee, I
+            simply love coffee. If you'd like to work with me, then an actual
+            espresso machine with a steamer is closer to a need than a want.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="bouldering">Bouldering</h3>
+          <p>
+            I go bouldering with my mates about once a week, primarily at
+            Boulders Sydhavnen. We also gathered up a bunch of us in the Summer
+            of '22 and went to Kjugekull, Sweden, where we climbed on actual
+            boulders. I went with the same crew to get certified for top-rope
+            climbing, which I'm looking forward to using more.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="keyboards">Keyboards</h3>
+          <p class="pb-1">
+            I have spent a lot of time tweaking and perfecting the
+            functionality, look, and feel, of my black-and-gray split ergonomic
+            keyboard, based on the Dactyl-Manuform. Built with lubed and filmed
+            Kailh Palias, adorned with blank DSA-profile keycaps, and with an
+            inbuild trackball for light navigation while using it, all
+            hand-soldered with wires and diodes, this keyboard is my dream
+            build.
+            <br />
+            It is not finished yet, but it will be Soon&trade;.
+          </p>
+          <aside class={aside}>
+            Can you call it a hobby if you only have 1.5 keyboards?
+            <br />
+            I suppose non-hobbyists would have a whole number of keyboards in their
+            possesion...
+          </aside>
+        </div>
+        <div class="flex flex-col pb-4">
+          <h3 class="text-xl" id="3d-printing">3D Printing</h3>
+          <p>
+            I have an Ender 3 at home I have used to print the aforementioned
+            split ergo keyboard, my miniature paint holder, a friend's board
+            game organizer, among many other nice things and doodads. Being able
+            to design something, and then immediately be able to make a version
+            I can hold in my hand, is so empowering.
+          </p>
+        </div>
+        <div class="flex flex-col pb-4">
+          <div>
+            <h3 class="text-xl inline">Interests Lightning Round</h3>
+            <span class={aside}>
+              &ndash; would take up too much space otherwise</span
+            >
+          </div>
+          <p>
+            Board games, Electronic music, Electronics tinkering, Dancing at
+            parties, Video games, Cooking, Competitive Programming, Game
+            Development, Math
+          </p>
+        </div>
       </section>
     </main>
     <Footer />
