@@ -1,22 +1,37 @@
 ---
+import { Icon } from "astro-icon";
+import { GREEN_STYLE } from "../config";
 import HeaderLink from "./HeaderLink.astro";
-import { SITE_TITLE } from "../config";
 const { class: className } = Astro.props;
 ---
 
-<header class:list={["w-full mb-6", className]}>
-  <h2 class="my-2">
-    {SITE_TITLE}
-  </h2>
+<header
+  class:list={[
+    "w-full mb-6 flex justify-between items-center border-b border-lime-500",
+    className,
+  ]}
+>
+  <a
+    href="/"
+    class={"my-2 inline uppercase text-2xl hover:-from-30% hover:to-70% " +
+      GREEN_STYLE}>Green</a
+  >
   <nav class="flex">
     <HeaderLink class="flex-grow" href="/">Home</HeaderLink>
     <!-- <HeaderLink href="/blog">Blog</HeaderLink>
     <HeaderLink href="/about">About</HeaderLink> -->
-    <HeaderLink class="flex-grow" href="https://www.linkedin.com/in/simon-g-k/">
-      LinkedIn
-    </HeaderLink>
-    <HeaderLink class="flex-grow" href="https://github.com/Duckapple">
-      GitHub
-    </HeaderLink>
+    <HeaderLink href="/CV">CV</HeaderLink>
+    <a href="https://www.linkedin.com/in/simon-g-k/" class="px-2">
+      <Icon
+        name="mdi:linkedin"
+        class="h-8 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
+      />
+    </a>
+    <a href="https://github.com/Duckapple" class="pl-2">
+      <Icon
+        name="mdi:github"
+        class="h-8 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
+      />
+    </a>
   </nav>
 </header>

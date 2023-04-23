@@ -18,10 +18,10 @@ const hasPII =
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={"CV | " + SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="min-h-screen flex flex-col items-center dark:bg-zinc-800">
-    <Header title={SITE_TITLE} class="md:max-w-3xl px-4 print:hidden" />
+    <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />
     <main class="md:max-w-6xl p-4">
       <div class="flex flex-col sm:flex-row-reverse">
         <div>
@@ -40,17 +40,17 @@ const hasPII =
           </p>
         </div>
         <div
-          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900"
+          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900"
         >
           <a
-            class="text-blue-700 dark:text-blue-300 hover:underline"
+            class="text-lime-700 dark:text-lime-300 hover:underline"
             href="mailto:me@simon-green.dev">me@simon-green.dev</a
           >
           {
             hasPII && (
               <>
                 <a
-                  class="text-blue-700 dark:text-blue-300 hover:underline"
+                  class="text-lime-700 dark:text-lime-300 hover:underline"
                   id="phone"
                   href={"tel:+45 " + import.meta.env.PUBLIC_TELEPHONE}
                 >
@@ -76,7 +76,7 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
           >
           </div>
           <h2 id="experience" class="block w-full text-2xl pt-6 pb-2">
@@ -157,7 +157,7 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
           >
           </div>
           <h2 id="education" class="block w-full text-2xl pt-6 pb-2">
@@ -238,7 +238,7 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
           >
           </div>
           <h2 id="projects" class="block w-full text-2xl pt-6 pb-2">
@@ -296,7 +296,7 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
           >
           </div>
           <h2 id="hobbies" class="block w-full text-2xl pt-6 pb-2">Hobbies</h2>
@@ -347,7 +347,7 @@ const hasPII =
         </ExperienceItem>
         <div class="flex">
           <div
-            class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4 text-right"
+            class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4 text-right"
           >
           </div>
           <div class="flex flex-col">

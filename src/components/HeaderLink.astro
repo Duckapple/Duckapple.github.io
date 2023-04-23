@@ -1,14 +1,11 @@
 ---
-import Link from './Link.astro';
+import Link from "./Link.astro";
 
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
 
 const { href, class: className } = Astro.props;
 ---
 
-<Link
-  href={href}
-  class={className + " text-center inline-block px-4 py-1 border border-black dark:border-gray-400"}
->
+<Link href={href} class={className + " text-center inline-block px-2 py-1"}>
   <slot />
 </Link>

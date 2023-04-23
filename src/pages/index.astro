@@ -1,0 +1,95 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION, GREEN_STYLE } from "../config";
+import Link from "../components/Link.astro";
+import { Icon } from "astro-icon";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="min-h-screen dark:bg-zinc-800 font-sans">
+    <div class="flex flex-col sm:flex-row justify-center pb-4">
+      <div class="py-4 w-full flex justify-center sm:w-auto sm:p-24">
+        <div
+          class="rounded-full w-64 h-64 sm:w-80 sm:h-80 bg-white border border-black"
+        >
+        </div>
+      </div>
+      <div
+        class="flex flex-col justify-center items-center text-xl sm:text-3xl"
+      >
+        <span>Hi, I'm</span>
+        <div
+          id="breathe"
+          class="flex flex-col items-center uppercase text-5xl sm:text-8xl pb-4"
+        >
+          <span id="sg" class={GREEN_STYLE}>Simon Green</span>
+          <span id="k" class={GREEN_STYLE}>Kristensen</span>
+        </div>
+        <div class="flex flex-col items-center sm:leading-9">
+          <span>a software developer from Denmark 🇩🇰</span>
+          <span>with a knack for types and analysis.</span>
+          <span>
+            I made <Link noIcon href="https://github.com/Duckapple/Kat">
+              <span class="font-mono">Kat</span>
+            </Link> and remade <Link
+              noIcon
+              href="https://tile-game.simon-green.dev/"
+            >
+              Azul
+            </Link>
+          </span>
+          <span>and I enjoy espresso ☕</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-center">
+      <a
+        href="/CV"
+        class="px-6 py-3 rounded-lg bg-gradient-to-br from-lime-500 to-lime-600 text-white text-xl cursor-pointer"
+      >
+        Check out my CV!
+      </a>
+    </div>
+    <Icon
+      id="cursor"
+      name="mdi:cursor-default-outline"
+      class="fixed h-8 transition-transform top-0 left-0 -translate-x-8"
+    />
+    <Footer />
+    <script>
+      const sg = document.getElementById("sg")!;
+      const k = document.getElementById("k")!;
+      const cursor = document.getElementById("cursor")!;
+      function x(time: number) {
+        const pct = Math.round(Math.sin(time / 1000) * 20);
+        const toPct = 80 + pct;
+        const attr =
+          "--tw-gradient-to-position: " +
+          toPct +
+          "%; --tw-gradient-from-position: " +
+          pct +
+          "%";
+        sg.setAttribute("style", attr);
+        k.setAttribute("style", attr);
+        requestAnimationFrame(x);
+      }
+      requestAnimationFrame(x);
+      window.addEventListener("click", (e) => {
+        cursor.setAttribute(
+          "style",
+          "--tw-translate-x: " +
+            e.clientX +
+            "px; --tw-translate-y: " +
+            e.clientY +
+            "px;"
+        );
+      });
+    </script>
+  </body>
+</html>
