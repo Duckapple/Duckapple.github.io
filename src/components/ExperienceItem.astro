@@ -1,0 +1,43 @@
+---
+import Link from "./Link.astro";
+
+export interface Props {
+  title: string | Element;
+  tags?: string | Element;
+  timespan?: string;
+  link?: string;
+  anchor?: string;
+  linkText?: string;
+  hidden?: boolean;
+}
+
+const { title, link, linkText, tags, timespan, anchor, hidden } = Astro.props;
+---
+
+<div class:list={[{ hidden }]}>
+  <div class="flex">
+    <div class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4">
+    </div>
+    <div>
+      {
+        typeof title === "string" ? (
+          <h3 id={anchor} class="text-xl">
+            {title}
+          </h3>
+        ) : (
+          title
+        )
+      }
+      {link && <Link href={link}>{linkText ?? link}</Link>}
+      {timespan && <span class="block pb-2">{timespan}</span>}
+    </div>
+  </div>
+  <div class="flex">
+    <div
+      class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4 text-right"
+    >
+      {tags}
+    </div>
+    <div class="pb-6"><slot /></div>
+  </div>
+</div>

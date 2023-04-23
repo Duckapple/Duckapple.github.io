@@ -1,9 +1,11 @@
 ---
 import { Icon } from "astro-icon";
 
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  fallback?: string;
+}
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, fallback, ...props } = Astro.props;
 
 const { pathname, host, origin } = Astro.url;
 const { host: newHost } = new URL(href || "", origin);
@@ -15,7 +17,7 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
 <a
   class:list={[
     className,
-    "text-blue-700 dark:text-blue-400 hover:underline",
+    "text-blue-700 dark:text-blue-300 hover:underline",
     { "underline font-bold": isActive },
   ]}
   href={href}
@@ -24,6 +26,16 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   target={isExt ? "_blank" : null}
   {...props}
 >
-  <slot />
-  {isExt && <Icon class="h-4 inline -mt-1" name="octicon:link-external-16" />}
+  <span class="print:hidden">
+    <slot />
+  </span>
+  <span class="hidden print:inline">{fallback ?? href}</span>
+  {
+    isExt && (
+      <Icon
+        class="print:hidden h-4 inline -mt-1"
+        name="octicon:link-external-16"
+      />
+    )
+  }
 </a>

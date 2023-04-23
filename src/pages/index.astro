@@ -4,12 +4,15 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Link from "../components/Link.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
 
 const bd = Math.floor(
   (new Date().valueOf() - new Date("1999-03-16").valueOf()) /
     (1000 * 60 * 60 * 24 * 365)
 );
 const aside = "text-sm text-gray-500 dark:text-gray-400";
+const hasPII =
+  !!import.meta.env.PUBLIC_TELEPHONE && !!import.meta.env.PUBLIC_ADDRESS;
 ---
 
 <!DOCTYPE html>
@@ -17,35 +20,96 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body class="min-h-screen flex flex-col items-center">
+  <body class="min-h-screen flex flex-col items-center dark:bg-zinc-800">
     <Header title={SITE_TITLE} class="md:max-w-3xl px-4 print:hidden" />
-    <main class="md:max-w-3xl p-4">
-      <h1 class="text-3xl pb-2">Simon Green Kristensen</h1>
-      <p>
-        I'm a {bd} year old developer from Copenhagen, Denmark.
-        <br />
-        I love developing ways to make life easier for myself and others, which usually
-        leads me to software analysis and web development projects.
-      </p>
-      <section class="pt-6 pb-2">
-        <h2 id="experience" class="text-2xl pb-2">Experience</h2>
-        <div class="flex flex-col pb-4">
-          <h3 id="firmnav" class="text-xl">Full-Stack Software Developer</h3>
-          <Link href="https://firmnav.com/">Firmnav</Link>
-          <span>Jul '20 &ndash; Jul '22</span>
-          <p>
-            Full-stack software development on a fin-tech SaaS TypeScript web
-            app with Express backend and Node pipeline. Responsible for
-            benchmark visualisations, HubSpot and SalesForce CRM integrations,
-            data layout selector, company relationship visualisations, and
-            general platform improvements and bug fixes.
+    <main class="md:max-w-6xl p-4">
+      <div class="flex flex-col sm:flex-row-reverse">
+        <div>
+          <h1 class="text-4xl pt-4 pb-2 sm:pl-4">Simon Green Kristensen</h1>
+          <p class="sm:pl-4">
+            I'm a {bd} year old developer from Copenhagen, Denmark 🇩🇰
+            <br />
+            I have worked two years part-time as a full-stack developer, one more
+            as a Teaching Assistant, and in both situations, my adaptability and
+            me being a fast learner has helped me quickly find and solve problems.
+            I love developing ways to make life easier for myself and others, which
+            usually leads me to software analysis and web development projects. I
+            have spent a lot of time honing my skills with hobby projects, which
+            includes a command-line tool for competitive programming and web-based
+            games.
           </p>
         </div>
-        <div class="flex flex-col pb-4">
-          <h3 id="teaching-assistant" class="text-xl">Teaching Assistant</h3>
-          <Link href="https://itu.dk/">IT University of Copenhagen</Link>
-          <span>Jan &ndash; Dec '20 and Sep '22 &ndash; Jul '23</span>
+        <div
+          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900"
+        >
+          <a
+            class="text-blue-700 dark:text-blue-300 hover:underline"
+            href="mailto:me@simon-green.dev">me@simon-green.dev</a
+          >
+          {
+            hasPII && (
+              <>
+                <a
+                  class="text-blue-700 dark:text-blue-300 hover:underline"
+                  id="phone"
+                  href={"tel:+45 " + import.meta.env.PUBLIC_TELEPHONE}
+                >
+                  +45 {import.meta.env.PUBLIC_TELEPHONE}
+                </a>
+                <span class="tracking-tight" id="address">
+                  {import.meta.env.PUBLIC_ADDRESS}
+                </span>
+              </>
+            )
+          }
+          <Link id="linkedin" href="https://www.linkedin.com/in/simon-g-k/">
+            LinkedIn
+          </Link>
+          <Link
+            href="https://github.com/Duckapple"
+            class="print:tracking-tight"
+          >
+            GitHub
+          </Link>
+        </div>
+      </div>
+      <section>
+        <div class="flex">
+          <div
+            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+          >
+          </div>
+          <h2 id="experience" class="block w-full text-2xl pt-6 pb-2">
+            Experience
+          </h2>
+        </div>
+        <ExperienceItem
+          anchor="firmnav"
+          title="Full-Stack Software Developer"
+          link="https://firmnav.com/"
+          linkText="Firmnav"
+          timespan="Jul '20 – Jul '22"
+          tags="TypeScript, React, Tailwind, GraphQL, PostgreSQL, NodeJS, Express, Pulumi, DevOps, Docker, DigitalOcean, S3"
+        >
           <p>
+            Firmnav created AI-powered data aggregations and predictions, but
+            used to be a company database and search engine when I worked there.
+            My role was full-stack software development on a fin-tech SaaS
+            TypeScript web app with Express backend and NodeJS pipeline.
+            Responsible for benchmark visualisations, HubSpot and SalesForce CRM
+            integrations, data layout selector, company relationship
+            visualisations, and general platform improvements and bug fixes.
+          </p>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="teaching-assistant"
+          title="Teaching Assistant"
+          link="https://itu.dk/"
+          linkText="IT University of Copenhagen"
+          timespan="Jan – Dec '20 and Sep '22 – Jul '23"
+          tags="Java, Algorithms, Web, JS, CSS, HTML, F#, Scala, AI"
+        >
+          <p class="pb-2">
             I have led exercise classes, corrected assignments, and helped
             students get through the courses.
           </p><p>
@@ -74,37 +138,40 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
               </li>
             </ul>
           </p>
-          <p>
-            For Systematic Design of User Interfaces, I created a script for
-            validating submissions for an exercise. The script is probably
-            unused these days, and <Link
-              href="https://github.com/Duckapple/SDAB-Validator"
-            >
-              can be found here.
-            </Link>
-          </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 id="analog-barista" class="text-xl">Volunteer Barista</h3>
-          <Link href="https://cafeanalog.dk//">Café Analog</Link>
-          <span>Sep '22 &ndash; Jul '23</span>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="analog-barista"
+          title="Volunteer Barista"
+          link="https://cafeanalog.dk/"
+          linkText="Café Analog"
+          timespan="Sep '22 – Jul '23"
+          tags="Espresso, Latte, Board Games"
+        >
           <p>
             I volunteered as a barista at the student café at my university,
             both to learn more about coffee and to get to know more of my fellow
             students.
           </p>
-        </div>
+        </ExperienceItem>
       </section>
-      <section class="py-2">
-        <h2 id="education" class="text-2xl pb-2">Education</h2>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl">Msc: Computer Science (Software Analysis)</h3>
-          <Link
-            href="https://en.itu.dk/Programmes/MSc-Programmes/Computer-Science"
+      <section>
+        <div class="flex">
+          <div
+            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
           >
-            IT University of Copenhagen
-          </Link>
-          <span>Sep '21 &ndash; Jul '23</span>
+          </div>
+          <h2 id="education" class="block w-full text-2xl pt-6 pb-2">
+            Education
+          </h2>
+        </div>
+        <ExperienceItem
+          anchor="computer-science"
+          title="Msc: Computer Science (Software Analysis)"
+          link="https://en.itu.dk/Programmes/MSc-Programmes/Computer-Science"
+          linkText="IT University of Copenhagen"
+          timespan="Sep '21 – Jul '23"
+          tags="Coq, Formal Verification, Scala, Software Analysis, Idris, OCaml, C++, Electronics, Systems Performance, MDSE"
+        >
           <p class="pb-2">
             During my studies, I took courses on software analysis, the art of
             trying to find errors and problems in programs via analysis, which
@@ -137,15 +204,15 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
               </li>
             </ul>
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl">Bsc: Software Development</h3>
-          <Link
-            href="https://en.itu.dk/Programmes/BSc-Programmes/Software-Development"
-          >
-            IT University of Copenhagen
-          </Link>
-          <span>Sep '18 &ndash; Jul '21</span>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="software-development"
+          title="Bsc: Software Development"
+          link="https://en.itu.dk/Programmes/BSc-Programmes/Software-Development"
+          linkText="IT University of Copenhagen"
+          timespan="Sep '18 – Jul '21"
+          tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reactivity, Scrum, Java, JavaScript, Business Processes, HTML"
+        >
           <p class="pb-2">
             Learned to program in multiple languages and paradigms using
             different design patterns. This was combined with courses on team
@@ -166,39 +233,56 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
               GitHub Organisation
             </Link>.
           </p>
-        </div>
+        </ExperienceItem>
       </section>
-      <section class="py-2">
-        <h2 id="projects" class="text-2xl pb-2">Projects</h2>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="tile-game">Tile Game</h3>
-          <Link href="https://tile-game.simon-green.dev">
-            tile-game.simon-green.dev
-          </Link>
+      <section>
+        <div class="flex">
+          <div
+            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+          >
+          </div>
+          <h2 id="projects" class="block w-full text-2xl pt-6 pb-2">
+            Projects
+          </h2>
+        </div>
+        <ExperienceItem
+          title="Tile Game"
+          anchor="tile-game"
+          link="https://tile-game.simon-green.dev"
+          linkText="tile-game.simon-green.dev"
+          tags="Vue, Express, WebSockets, Tailwind"
+        >
           <p>
             I made a web-based implementation of the board game <Link
               href="https://boardgamegeek.com/boardgame/230802/azul"
+              fallback="Azul"
             >
               Azul
             </Link>. It is implemented with Vue and Express, using WebSockets
-            for communication.
+            for communication between players and the server.
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="color-picker">Color Picker</h3>
-          <Link href="https://color-picker.simon-green.dev">
-            color-picker.simon-green.dev
-          </Link>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="color-picker"
+          title="Color Picker"
+          link="https://color-picker.simon-green.dev"
+          linkText="color-picker.simon-green.dev"
+          tags="JavaScript, Web"
+        >
           <p>
             I wanted to be able to extract the colors used in my favourite text
             editor theme, and therefore I made this little tool. It accepts a
             text snippet, and attempts to extract all colors used in the text,
             using small swatches to display them to the user.
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="kat">Kat: A Kattis Helper</h3>
-          <Link href="https://github.com/Duckapple/Kat">Kat on GitHub</Link>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="kat"
+          title="Kat: A Kattis Helper"
+          link="https://github.com/Duckapple/Kat"
+          linkText="Kat on GitHub"
+          tags="Python, Competitive Programming"
+        >
           <p>
             Kat is a tool for retrieveing, testing and submitting problems to
             <Link href="https://open.kattis.com">Kattis</Link>, a code challenge
@@ -206,21 +290,25 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
             solutions, and helps you in helping yourself troubleshoot your
             solutions by running your own fuzzers.
           </p>
-        </div>
+        </ExperienceItem>
         <!-- Markdown Tables, Coq Suggestions -->
       </section>
-      <section class="py-2">
-        <h2 id="hobbies" class="text-2xl pb-2">Hobbies</h2>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="coffee">Coffee</h3>
+      <section>
+        <div class="flex">
+          <div
+            class="sm:w-64 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4"
+          >
+          </div>
+          <h2 id="hobbies" class="block w-full text-2xl pt-6 pb-2">Hobbies</h2>
+        </div>
+        <ExperienceItem anchor="coffee" title="Coffee" hidden>
           <p>
             I love the taste of coffee, I love the process of making coffee, I
             simply love coffee. If you'd like to work with me, then an actual
             espresso machine with a steamer is closer to a need than a want.
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="bouldering">Bouldering</h3>
+        </ExperienceItem>
+        <ExperienceItem anchor="bouldering" title="Bouldering">
           <p>
             I go bouldering with my mates about once a week, primarily at
             Boulders Sydhavnen. We also gathered up a bunch of us in the Summer
@@ -228,9 +316,8 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
             boulders. I went with the same crew to get certified for top-rope
             climbing, which I'm looking forward to using more.
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="keyboards">Keyboards</h3>
+        </ExperienceItem>
+        <ExperienceItem anchor="keyboards" title="Keyboards">
           <p class="pb-1">
             I have spent a lot of time tweaking and perfecting the
             functionality, look, and feel, of my black-and-gray split ergonomic
@@ -248,9 +335,8 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
             I suppose non-hobbyists would have a whole number of keyboards in their
             possesion...
           </aside>
-        </div>
-        <div class="flex flex-col pb-4">
-          <h3 class="text-xl" id="3d-printing">3D Printing</h3>
+        </ExperienceItem>
+        <ExperienceItem anchor="3d-printing" title="3D Printing">
           <p>
             I have an Ender 3 at home I have used to print the aforementioned
             split ergo keyboard, my miniature paint holder, a friend's board
@@ -258,19 +344,25 @@ const aside = "text-sm text-gray-500 dark:text-gray-400";
             to design something, and then immediately be able to make a version
             I can hold in my hand, is so empowering.
           </p>
-        </div>
-        <div class="flex flex-col pb-4">
-          <div>
-            <h3 class="text-xl inline">Interests Lightning Round</h3>
-            <span class={aside}>
-              &ndash; would take up too much space otherwise</span
-            >
+        </ExperienceItem>
+        <div class="flex">
+          <div
+            class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-blue-100 sm:dark:bg-cyan-900 mr-4 text-right"
+          >
           </div>
-          <p>
-            Board games, Electronic music, Electronics tinkering, Dancing at
-            parties, Video games, Cooking, Competitive Programming, Game
-            Development, Math
-          </p>
+          <div class="flex flex-col">
+            <div>
+              <h3 class="text-xl inline">Interests Lightning Round</h3>
+              <span class={aside}>
+                &ndash; would take up too much space otherwise</span
+              >
+            </div>
+            <p>
+              Board games, Electronic music, Electronics tinkering, Dancing at
+              parties, Video games, Cooking, Competitive Programming, Game
+              Development, Math
+            </p>
+          </div>
         </div>
       </section>
     </main>
