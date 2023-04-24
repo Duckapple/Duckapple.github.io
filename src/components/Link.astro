@@ -13,6 +13,7 @@ const { host: newHost } = new URL(href || "", origin);
 
 const isExt = host !== newHost; // && !newHost.includes("simon-green");
 const isActive = href === pathname || href === pathname.replace(/\/$/, "");
+// FML this formatting grrr
 ---
 
 <a
@@ -26,14 +27,11 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
   rel={isExt ? "external noreferrer" : null}
   target={isExt ? "_blank" : null}
   {...props}
->
-  <span class="print:hidden group-hover:underline">
-    <slot />
-  </span>
-  <span class="hidden print:inline">{fallback ?? href}</span>
-  {
+  ><span class="print:hidden group-hover:underline"><slot /></span><span
+    class="hidden print:inline">{fallback ?? href}</span
+  >{
     isExt && !noIcon && (
-      <Icon class="print:hidden h-4 inline -mt-1" name="mdi:open-in-new" />
+      <Icon class="print:hidden h-4 inline ml-1 -mt-1" name="mdi:open-in-new" />
     )
-  }
-</a>
+  }</a
+>

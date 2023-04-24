@@ -35,8 +35,12 @@ import { Icon } from "astro-icon";
           <span>a software developer from Denmark 🇩🇰</span>
           <span>with a knack for types and analysis.</span>
           <span>
-            I made <Link noIcon href="https://github.com/Duckapple/Kat">
-              <span class="font-mono">Kat</span>
+            I made <Link
+              noIcon
+              href="https://github.com/Duckapple/Kat"
+              class="font-mono leading-none"
+            >
+              {"Kat"}
             </Link> and remade <Link
               noIcon
               href="https://tile-game.simon-green.dev/"
@@ -59,7 +63,7 @@ import { Icon } from "astro-icon";
     <Icon
       id="cursor"
       name="mdi:cursor-default-outline"
-      class="fixed h-8 transition-transform top-0 left-0 -translate-x-8"
+      class="fixed h-8 transition-transform -top-1 -left-2 -translate-x-8"
     />
     <Footer />
     <script>

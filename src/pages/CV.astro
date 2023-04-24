@@ -22,10 +22,12 @@ const hasPII =
   </head>
   <body class="min-h-screen flex flex-col items-center dark:bg-zinc-800">
     <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />
-    <main class="md:max-w-6xl p-4">
+    <main class="md:max-w-6xl p-4 print:py-0">
       <div class="flex flex-col sm:flex-row-reverse">
         <div>
-          <h1 class="text-4xl pt-4 pb-2 sm:pl-4">Simon Green Kristensen</h1>
+          <h1 class="text-4xl pt-4 pb-2 sm:pl-4 print:pt-2">
+            Simon Green Kristensen
+          </h1>
           <p class="sm:pl-4">
             I'm a {bd} year old developer from Copenhagen, Denmark 🇩🇰
             <br />
@@ -40,7 +42,7 @@ const hasPII =
           </p>
         </div>
         <div
-          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900"
+          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 print:sm:pt-2"
         >
           <a
             class="text-lime-700 dark:text-lime-300 hover:underline"
@@ -63,13 +65,13 @@ const hasPII =
             )
           }
           <Link id="linkedin" href="https://www.linkedin.com/in/simon-g-k/">
-            LinkedIn
+            {"LinkedIn"}
           </Link>
           <Link
             href="https://github.com/Duckapple"
             class="print:tracking-tight"
           >
-            GitHub
+            {"GitHub"}
           </Link>
         </div>
       </div>
@@ -107,34 +109,43 @@ const hasPII =
           link="https://itu.dk/"
           linkText="IT University of Copenhagen"
           timespan="Jan – Dec '20 and Sep '22 – Jul '23"
-          tags="Java, Algorithms, Web, JS, CSS, HTML, F#, Scala, AI"
+          tags="Algorithms, Web, JS, CSS, HTML, Networking, Java, Python, Scala, F#, AI"
         >
           <p class="pb-2">
             I have led exercise classes, corrected assignments, and helped
             students get through the courses.
           </p><p>
-            I have been a teaching assistant for:
-            <ul class="flex flex-wrap">
+            I have been a teaching assistant for 7 courses:
+            <ul class="">
               <li class="flex-shrink-0" title="Jan - Jul '20">
-                Algorithms and Data Structures,&nbsp;
+                <span class="font-bold">Algorithms and Data Structures</span> teaching
+                theoretical worst-case performance of sorting and such,
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '20">
-                Systematic Design of User Interfaces,&nbsp;
+                <span class="font-bold"
+                  >Systematic Design of User Interfaces</span
+                > teaching about web design and technologies,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '20">
-                Mobile and Distributed Systems,&nbsp;
+                <span class="font-bold">Mobile and Distributed Systems</span> teaching
+                networking and threading with Java,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '22">
-                Algorithm Design,&nbsp;
+                <span class="font-bold">Algorithm Design</span> teaching about dynamic
+                programming, min-cut max-flow, and whether P = NP,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '22">
-                Advanced Programming,&nbsp;
+                <span class="font-bold">Advanced Programming</span> teaching about
+                Monads in 7 different ways in Scala,
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '23">
-                Functional Programming,&nbsp;
+                <span class="font-bold">Functional Programming</span> teaching functional
+                programming with F#, and
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '23">
-                Introduction to Artificial Intelligence
+                <span class="font-bold"
+                  >Introduction to Artificial Intelligence</span
+                > teaching &alpha;&beta;-minimax, binary decision diagrams, etc.
               </li>
             </ul>
           </p>
@@ -184,7 +195,11 @@ const hasPII =
             ranking algorithm for the formal verification system Coq. The type
             system for Coq is very expansive, which provides opportunities for
             more specific suggestions, at the cost of low performance due to
-            having to compare types.
+            having to compare types. Our work can be found on <Link
+              href="https://github.com/coq-community/vscoq"
+            >
+              {"the VSCoq project"}
+            </Link>.
           </p>
           <p>
             Other cool courses:
@@ -226,12 +241,10 @@ const hasPII =
           </p>
           <p>
             My final project was on creating an imperative-style programming
-            language with imperative elements. Together with my mate Jonas
-            Lindenskov, we specified and implemented the language in C#,
-            creating a neat proof of concept. It is accessible on our
-            <Link href="https://github.com/jolnsigkitu">
-              GitHub Organisation
-            </Link>.
+            language with reactive elements. Together with my mate Jonas
+            Lindenskov, we implemented the language in C#, creating a neat proof
+            of concept. It is accessible on our Github Organisation
+            <Link href="https://github.com/jolnsigkitu">jolnsigkitu</Link>.
           </p>
         </ExperienceItem>
       </section>
@@ -257,7 +270,7 @@ const hasPII =
               href="https://boardgamegeek.com/boardgame/230802/azul"
               fallback="Azul"
             >
-              Azul
+              {"Azul"}
             </Link>. It is implemented with Vue and Express, using WebSockets
             for communication between players and the server.
           </p>
@@ -314,18 +327,18 @@ const hasPII =
             Boulders Sydhavnen. We also gathered up a bunch of us in the Summer
             of '22 and went to Kjugekull, Sweden, where we climbed on actual
             boulders. I went with the same crew to get certified for top-rope
-            climbing, which I'm looking forward to using more.
+            climbing, which I'm looking forward to doing more.
           </p>
         </ExperienceItem>
         <ExperienceItem anchor="keyboards" title="Keyboards">
           <p class="pb-1">
             I have spent a lot of time tweaking and perfecting the
             functionality, look, and feel, of my black-and-gray split ergonomic
-            keyboard, based on the Dactyl-Manuform. Built with lubed and filmed
+            keyboard, based on the Dactyl-Manuform. <!-- Built with lubed and filmed
             Kailh Palias, adorned with blank DSA-profile keycaps, and with an
             inbuild trackball for light navigation while using it, all
             hand-soldered with wires and diodes, this keyboard is my dream
-            build.
+            build. -->
             <br />
             It is not finished yet, but it will be Soon&trade;.
           </p>
@@ -339,10 +352,11 @@ const hasPII =
         <ExperienceItem anchor="3d-printing" title="3D Printing">
           <p>
             I have an Ender 3 at home I have used to print the aforementioned
-            split ergo keyboard, my miniature paint holder, a friend's board
-            game organizer, among many other nice things and doodads. Being able
-            to design something, and then immediately be able to make a version
-            I can hold in my hand, is so empowering.
+            split ergo keyboard, <!-- my miniature paint holder, a friend's board
+            game organizer, -->
+            among many other nice things and doodads. Being able to design something,
+            and then immediately be able to make a version I can hold in my hand,
+            is so empowering.
           </p>
         </ExperienceItem>
         <div class="flex">
