@@ -1,0 +1,142 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+  content: {
+    title: string;
+    description: string;
+    pubDate?: string;
+    updatedDate?: string;
+    heroImage?: string;
+  };
+}
+
+const {
+  content: { title, description, pubDate, updatedDate, heroImage },
+} = Astro.props;
+
+const [yyyy, mm, dd] = (pubDate ?? "").split("-").map(Number);
+const months = [
+  "Jan",
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+const mod = (dd ?? 0) % 10;
+
+const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css"
+      integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ"
+      crossorigin="anonymous"
+    />
+    <style is:global>
+      article h1 {
+        @apply text-4xl mb-4;
+      }
+      article h2 {
+        @apply text-3xl mb-3;
+      }
+      article h3 {
+        @apply text-2xl mb-2;
+      }
+      article h4,
+      article h5,
+      article h6 {
+        @apply text-xl mb-1;
+      }
+      article h6 {
+        @apply text-zinc-700 dark:text-zinc-300;
+      }
+      article p,
+      article blockquote,
+      article ul,
+      article ol {
+        @apply mb-4;
+      }
+      article ul {
+        @apply list-inside list-disc;
+      }
+      article ol {
+        @apply list-inside list-decimal;
+      }
+      li > ul,
+      li > ol {
+        @apply ml-6;
+        margin-bottom: 0;
+      }
+      article pre {
+        @apply rounded-lg border-2 border-zinc-900 mb-4;
+      }
+      article table {
+        @apply border-t border-zinc-400 mb-4;
+      }
+      article td,
+      article th {
+        @apply border-r border-b p-2 border-zinc-400;
+      }
+      article tr {
+        @apply border-l border-zinc-400;
+      }
+      mark {
+        @apply bg-lime-400 text-black;
+      }
+      figcaption {
+        @apply text-center;
+      }
+      .footnotes p {
+        @apply inline;
+      }
+    </style>
+  </head>
+
+  <body class="dark:bg-zinc-800 2xl:text-xl font-sans">
+    <Header class="md:max-w-6xl m-auto px-4 print:hidden" />
+    <main>
+      <article class="max-w-[80ch] p-2 sm:p-5 m-auto">
+        {heroImage && <img src={heroImage} alt="" class="mb-4" />}
+        <h1 class="2xl:text-5xl mt-2">{title}</h1>
+        {
+          pubDate && (
+            <time datetime={pubDate}>
+              {mm != null && months[mm]}
+              <>
+                {dd}
+                <sup>{arity}</sup>,
+              </>
+              {yyyy}
+            </time>
+          )
+        }
+        {
+          updatedDate && (
+            <div>
+              Last updated on <time>{updatedDate}</time>
+            </div>
+          )
+        }
+        <hr class="border-t border-zinc-800 dark:border-zinc-200 my-4" />
+        <slot />
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>
