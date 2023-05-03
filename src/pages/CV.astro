@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import { SITE_TITLE } from "../config";
 import Link from "../components/Link.astro";
 import ExperienceItem from "../components/ExperienceItem.astro";
 
@@ -18,7 +18,11 @@ const hasPII =
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <BaseHead title={"CV | " + SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead
+      title={"CV | " + SITE_TITLE}
+      description={bd +
+        " y/o full-stack dev from Denmark, cand.scient in Computer Science, coffee lover"}
+    />
   </head>
   <body class="min-h-screen flex flex-col items-center dark:bg-zinc-800">
     <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />

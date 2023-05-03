@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<Icon
+  id="cursor"
+  name="mdi:cursor-default-outline"
+  class="fixed h-8 transition-transform -top-1 -left-2 -translate-x-8"
+/>
+<script>
+  const cursor = document.getElementById("cursor")!;
+  window.addEventListener("click", (e) => {
+    cursor.setAttribute(
+      "style",
+      "--tw-translate-x: " +
+        e.clientX +
+        "px; --tw-translate-y: " +
+        e.clientY +
+        "px;"
+    );
+  });
+</script>
