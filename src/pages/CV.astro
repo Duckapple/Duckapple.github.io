@@ -33,16 +33,16 @@ const hasPII =
             Simon Green Kristensen
           </h1>
           <p class="sm:pl-4">
-            I'm a {bd} year old developer from Copenhagen, Denmark 🇩🇰
-            <br />
-            I have worked two years part-time as a full-stack developer, one more
-            as a Teaching Assistant, and in both situations, my adaptability and
-            me being a fast learner has helped me quickly find and solve problems.
-            I love developing ways to make life easier for myself and others, which
-            usually leads me to software analysis and web development projects. I
-            have spent a lot of time honing my skills with hobby projects, which
-            includes a command-line tool for competitive programming and web-based
-            games.
+            Full-stack engineer with a Master's in Computer Science and 2 years
+            of part-time, startup experience. I enjoy working with new and
+            exciting web technologies, but have experience with TypeScript,
+            React and TailwindCSS. I am adaptable and a fast learner, which
+            helps me find problems in my own and other's code before actual
+            problems show up. I love developing ways to make life easier for
+            myself and others, which usually leads me to software analysis and
+            web development projects. I have spent a lot of time honing my
+            skills with hobby projects, which includes a command-line tool for
+            competitive programming and web-based games.
           </p>
         </div>
         <div
@@ -68,17 +68,110 @@ const hasPII =
               </>
             )
           }
-          <Link id="linkedin" href="https://www.linkedin.com/in/simon-g-k/">
+          <Link
+            id="linkedin"
+            href="https://www.linkedin.com/in/simon-g-k/"
+            fallback="linkedin.com/in/simon-g-k"
+          >
             {"LinkedIn"}
           </Link>
           <Link
             href="https://github.com/Duckapple"
             class="print:tracking-tight"
+            fallback="github.com/Duckapple"
           >
             {"GitHub"}
           </Link>
+          <Link
+            href="https://simon-green.dev/Projects"
+            class="print:tracking-tight"
+            fallback="simon-green.dev/Projects"
+          >
+            {"Projects"}
+          </Link>
         </div>
       </div>
+      <section>
+        <div class="flex">
+          <div
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
+          >
+          </div>
+          <h2 id="education" class="block w-full text-2xl pt-6 pb-2">
+            Education
+          </h2>
+        </div>
+        <ExperienceItem
+          anchor="computer-science"
+          title="Msc: Computer Science (Software Analysis)"
+          linkText="IT University of Copenhagen"
+          timespan="Sep '21 – Jul '23"
+          tags="Coq, Formal Verification, Scala, Software Analysis, Idris, OCaml, C++, Electronics, Systems Performance, MDSE"
+        >
+          <p class="pb-2">
+            During my studies, I took courses on software analysis, the art of
+            trying to find errors and problems in programs via analysis, which
+            often involves new and exciting type systems. These include Program
+            Verification, Advanced Software Analysis, and Modelling Systems
+            Languages, as well as a research project and the thesis.
+          </p>
+          <p class="pb-2">
+            The thesis itself was about providing a code completion/suggestion
+            ranking algorithm for the formal verification system Coq. The type
+            system for Coq is very expansive, which provides opportunities for
+            more specific suggestions, at the cost of low performance due to
+            having to compare types. Our work can be found on <Link
+              href="https://github.com/coq-community/vscoq"
+            >
+              {"the VSCoq project"}
+            </Link>.
+          </p>
+          <p>
+            Other cool courses:
+            <ul class="list-disc pl-6">
+              <li>
+                How to Make Almost Anything; had fun learning about prototyping
+                physical products and robots.
+              </li>
+              <li>
+                Game Programming; taught me C++ and matrix operations, as well
+                as Entity Component Systems and other game engine tricks.
+              </li>
+              <li>
+                Computer Systems Performance; didn't learn how to improve
+                performance, but rather how to measure performance, as well as
+                how the hardware works.
+              </li>
+            </ul>
+          </p>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="software-development"
+          title="Bsc: Software Development"
+          linkText="IT University of Copenhagen"
+          timespan="Sep '18 – Jul '21"
+          tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reactivity, Scrum, Java, JavaScript, Business Processes, HTML"
+        >
+          <p class="pb-2">
+            Learned to program in multiple languages and paradigms using
+            different design patterns. This was combined with courses on team
+            collaboration, preliminary analysis, DevOps, design, and more.
+          </p>
+          <p class="pb-2">
+            One of my favourite courses was Programs As Data. Getting into the
+            internals of compilers and interpreters was exciting, especially
+            seeing how to perform operations on the syntax tree and optimising
+            languages.
+          </p>
+          <p>
+            My final project was on creating an imperative-style programming
+            language with reactive elements. Together with my mate Jonas
+            Lindenskov, we implemented the language in C#, creating a neat proof
+            of concept. It is accessible on our Github Organisation
+            <Link href="https://github.com/jolnsigkitu">jolnsigkitu</Link>.
+          </p>
+        </ExperienceItem>
+      </section>
       <section>
         <div class="flex">
           <div
@@ -95,14 +188,14 @@ const hasPII =
           link="https://firmnav.com/"
           linkText="Firmnav"
           timespan="Jul '20 – Jul '22"
-          tags="TypeScript, React, Tailwind, GraphQL, PostgreSQL, NodeJS, Express, Pulumi, DevOps, Docker, DigitalOcean, S3"
+          tags="TypeScript, React, Tailwind, GraphQL, PostgreSQL, NodeJS, Express, Pulumi, TypeORM, DevOps, Docker, DigitalOcean, S3"
         >
           <p>
-            Firmnav created AI-powered data aggregations and predictions, but
+            Firmnav creates AI-powered data aggregations and predictions, but
             used to be a company database and search engine when I worked there.
             My role was full-stack software development on a fin-tech SaaS
-            TypeScript web app with Express backend and NodeJS pipeline.
-            Responsible for benchmark visualisations, HubSpot and SalesForce CRM
+            TypeScript web app with Express backend and NodeJS pipeline. I was
+            responsible for benchmark visualisations, HubSpot and SalesForce CRM
             integrations, data layout selector, company relationship
             visualisations, and general platform improvements and bug fixes.
           </p>
@@ -166,89 +259,6 @@ const hasPII =
             I volunteered as a barista at the student café at my university,
             both to learn more about coffee and to get to know more of my fellow
             students.
-          </p>
-        </ExperienceItem>
-      </section>
-      <section>
-        <div class="flex">
-          <div
-            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
-          >
-          </div>
-          <h2 id="education" class="block w-full text-2xl pt-6 pb-2">
-            Education
-          </h2>
-        </div>
-        <ExperienceItem
-          anchor="computer-science"
-          title="Msc: Computer Science (Software Analysis)"
-          link="https://en.itu.dk/Programmes/MSc-Programmes/Computer-Science"
-          linkText="IT University of Copenhagen"
-          timespan="Sep '21 – Jul '23"
-          tags="Coq, Formal Verification, Scala, Software Analysis, Idris, OCaml, C++, Electronics, Systems Performance, MDSE"
-        >
-          <p class="pb-2">
-            During my studies, I took courses on software analysis, the art of
-            trying to find errors and problems in programs via analysis, which
-            often involves new and exciting type systems. These include Program
-            Verification, Advanced Software Analysis, and Modelling Systems
-            Languages, as well as a research project and the thesis.
-          </p>
-          <p class="pb-2">
-            The thesis itself was about providing a code completion/suggestion
-            ranking algorithm for the formal verification system Coq. The type
-            system for Coq is very expansive, which provides opportunities for
-            more specific suggestions, at the cost of low performance due to
-            having to compare types. Our work can be found on <Link
-              href="https://github.com/coq-community/vscoq"
-            >
-              {"the VSCoq project"}
-            </Link>.
-          </p>
-          <p>
-            Other cool courses:
-            <ul class="list-disc pl-6">
-              <li>
-                How to Make Almost Anything; had fun learning about prototyping
-                physical products and robots.
-              </li>
-              <li>
-                Game Programming; taught me C++ and matrix operations, as well
-                as Entity Component Systems and other game engine tricks.
-              </li>
-              <li>
-                Computer Systems Performance; didn't learn how to improve
-                performance, but rather how to measure performance, as well as
-                how the hardware works.
-              </li>
-            </ul>
-          </p>
-        </ExperienceItem>
-        <ExperienceItem
-          anchor="software-development"
-          title="Bsc: Software Development"
-          link="https://en.itu.dk/Programmes/BSc-Programmes/Software-Development"
-          linkText="IT University of Copenhagen"
-          timespan="Sep '18 – Jul '21"
-          tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reactivity, Scrum, Java, JavaScript, Business Processes, HTML"
-        >
-          <p class="pb-2">
-            Learned to program in multiple languages and paradigms using
-            different design patterns. This was combined with courses on team
-            collaboration, preliminary analysis, DevOps, design, and more.
-          </p>
-          <p class="pb-2">
-            One of my favourite courses was Programs As Data. Getting into the
-            internals of compilers and interpreters was exciting, especially
-            seeing how to perform operations on the syntax tree and optimising
-            languages.
-          </p>
-          <p>
-            My final project was on creating an imperative-style programming
-            language with reactive elements. Together with my mate Jonas
-            Lindenskov, we implemented the language in C#, creating a neat proof
-            of concept. It is accessible on our Github Organisation
-            <Link href="https://github.com/jolnsigkitu">jolnsigkitu</Link>.
           </p>
         </ExperienceItem>
       </section>

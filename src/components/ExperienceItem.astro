@@ -28,7 +28,7 @@ const { title, link, linkText, tags, timespan, anchor, hidden } = Astro.props;
           title
         )
       }
-      {link && <Link href={link}>{linkText ?? link}</Link>}
+      {link ? <Link href={link}>{linkText ?? link}</Link> : linkText}
       {timespan && <span class="block pb-2">{timespan}</span>}
     </div>
   </div>
