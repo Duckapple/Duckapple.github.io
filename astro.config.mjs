@@ -13,6 +13,8 @@ import remarkMath from "remark-math";
 
 import { normalizeUri } from "micromark-util-sanitize-uri";
 
+import { remarkSpoilerParser } from "./src/remark-rehype-plug";
+
 // @ts-check
 
 // https://astro.build/config
@@ -20,7 +22,7 @@ export default defineConfig({
   site: "https://simon-green.dev",
   integrations: [mdx(), sitemap(), tailwind(), solidJs()],
   markdown: {
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, remarkSpoilerParser],
     rehypePlugins: [
       [
         rehypeKatex,
@@ -32,6 +34,14 @@ export default defineConfig({
     ],
     remarkRehype: {
       handlers: {
+        spoiler: (state, node) => {
+          return state.applyData(node, {
+            type: "element",
+            tagName: "span",
+            properties: { className: "spoiler" },
+            children: node.children,
+          });
+        },
         image: (state, node) => {
           const properties = { src: normalizeUri(node.url) };
 

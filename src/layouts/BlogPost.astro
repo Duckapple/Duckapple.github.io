@@ -105,6 +105,13 @@ const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
       .footnotes p {
         @apply inline;
       }
+      .spoiler {
+        @apply text-transparent dark:text-zinc-200 dark:bg-zinc-200;
+      }
+      .spoiler:hover {
+        background-color: unset;
+        color: unset;
+      }
     </style>
   </head>
 
