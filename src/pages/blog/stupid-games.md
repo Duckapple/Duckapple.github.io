@@ -1,5 +1,5 @@
 ---
-layout: "../layouts/BlogPost.astro"
+layout: "../../layouts/BlogPost.astro"
 title: "Stupid games"
 description: "Lorem ipsum dolor sit amet"
 updatedDate: "July 6 2023"
