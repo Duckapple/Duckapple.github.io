@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Time from "../components/Time.astro";
 
 export interface Props {
   content: {
@@ -16,27 +17,6 @@ export interface Props {
 const {
   content: { title, description, pubDate, updatedDate, heroImage },
 } = Astro.props;
-
-const [yyyy, mm, dd] = (pubDate ?? "").split("-").map(Number);
-const months = [
-  "Jan",
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-const mod = (dd ?? 0) % 10;
-
-const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
 ---
 
 <html lang="en">
@@ -121,25 +101,8 @@ const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
       <article class="max-w-[80ch] p-2 sm:p-5 m-auto">
         {heroImage && <img src={heroImage} alt="" class="mb-4" />}
         <h1 class="2xl:text-5xl mt-2">{title}</h1>
-        {
-          pubDate && (
-            <time datetime={pubDate}>
-              {mm != null && months[mm]}
-              <>
-                {dd}
-                <sup>{arity}</sup>,
-              </>
-              {yyyy}
-            </time>
-          )
-        }
-        {
-          updatedDate && (
-            <div>
-              Last updated on <time>{updatedDate}</time>
-            </div>
-          )
-        }
+        {pubDate && ["Published", <Time datetime={pubDate} />]}
+        {updatedDate && [<br />, "Updated", <Time datetime={updatedDate} />]}
         <hr class="border-t border-zinc-800 dark:border-zinc-200 my-4" />
         <slot />
       </article>

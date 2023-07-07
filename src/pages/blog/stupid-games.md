@@ -2,8 +2,8 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Stupid games"
 description: "Lorem ipsum dolor sit amet"
-pubDate: "July 6 2023"
-updatedDate: "July 7 2023"
+pubDate: "2023-07-06"
+updatedDate: "2023-07-07"
 ---
 
 Alle de der lege, hvor man føler sig dum i 30 minutter og så går det op for en
