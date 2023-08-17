@@ -15,10 +15,10 @@ const { title, link, linkText, tags, timespan, anchor, hidden } = Astro.props;
 ---
 
 <div class:list={[{ hidden }]}>
-  <div class="flex">
+  <div class="sm:flex px-2 sm:px-0">
     <div class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4">
     </div>
-    <div>
+    <div class="pb-2">
       {
         typeof title === "string" ? (
           <h3 id={anchor} class="text-xl">
@@ -28,16 +28,33 @@ const { title, link, linkText, tags, timespan, anchor, hidden } = Astro.props;
           title
         )
       }
-      {link ? <Link href={link}>{linkText ?? link}</Link> : linkText}
-      {timespan && <span class="block pb-2">{timespan}</span>}
+      {
+        link ? (
+          <>
+            {linkText && <span class="hidden print:inline">{linkText} ( </span>}
+            <Link href={link}>{linkText ?? link}</Link>
+            {linkText && <span class="hidden print:inline">)</span>}
+          </>
+        ) : (
+          linkText
+        )
+      }
+      {timespan && <span class="block">{timespan}</span>}
     </div>
   </div>
-  <div class="flex">
+  <div class="flex flex-col-reverse sm:flex-row">
     <div
-      class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4 text-right"
+      class="sm:w-64 px-2 sm:px-4 pt-1 sm:pt-0 mb-4 pb-2 sm:mb-0 sm:pb-6 flex-shrink-0 bg-lime-50 dark:bg-lime-900 sm:mr-4 sm:text-right"
     >
-      {tags}
+      {
+        tags && (
+          <>
+            <span class="sm:hidden">{"Tags: "}</span>
+            {tags}
+          </>
+        )
+      }
     </div>
-    <div class="pb-6"><slot /></div>
+    <div class="px-2 sm:px-0 pb-2 sm:pb-6"><slot /></div>
   </div>
 </div>

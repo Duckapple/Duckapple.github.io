@@ -24,12 +24,14 @@ const hasPII =
         " y/o full-stack dev from Denmark, cand.scient in Computer Science, coffee lover"}
     />
   </head>
-  <body class="min-h-screen flex flex-col items-center dark:bg-zinc-800">
+  <body
+    class="min-h-screen md:flex print:flex flex-col items-center dark:bg-zinc-800"
+  >
     <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />
-    <main class="md:max-w-6xl p-4 print:py-0">
-      <div class="flex flex-col sm:flex-row-reverse">
+    <main class="md:max-w-6xl py-2 md:p-4 print:py-0">
+      <div class="md:flex print:flex flex-col sm:flex-row-reverse px-2 sm:px-0">
         <div>
-          <h1 class="text-4xl pt-4 pb-2 sm:pl-4 print:pt-2">
+          <h1 class="text-4xl sm:pt-2 pb-2 sm:pl-4 print:pt-2">
             Simon Green Kristensen
           </h1>
           <p class="sm:pl-4">
@@ -45,9 +47,14 @@ const hasPII =
             competitive programming and web-based games.
           </p>
         </div>
-        <div
-          class="flex sm:flex-col space-x-4 sm:space-x-0 sm:px-4 sm:pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 print:sm:pt-2"
+        <details
+          id="info"
+          open
+          class="flex flex-col sm:px-4 pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 print:pt-2"
         >
+          <summary class="font-bold cursor-pointer sm:hidden"
+            >Contact info and links</summary
+          >
           <a
             class="text-lime-700 dark:text-lime-300 hover:underline"
             href="mailto:me@simon-green.dev">me@simon-green.dev</a
@@ -83,27 +90,31 @@ const hasPII =
             {"GitHub"}
           </Link>
           <Link
-            href="https://simon-green.dev/Projects"
+            href="/projects"
             class="print:tracking-tight"
-            fallback="simon-green.dev/Projects"
+            fallback="simon-green.dev/projects"
           >
             {"Projects"}
           </Link>
-        </div>
+        </details>
       </div>
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
           >
           </div>
-          <h2 id="education" class="block w-full text-2xl pt-6 pb-2">
+          <h2
+            id="education"
+            class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
+          >
             Education
           </h2>
         </div>
         <ExperienceItem
           anchor="computer-science"
           title="Msc: Computer Science (Software Analysis)"
+          link="https://itu.dk/"
           linkText="IT University of Copenhagen"
           timespan="Sep '21 – Jul '23"
           tags="Coq, Formal Verification, Scala, Software Analysis, Idris, OCaml, C++, Electronics, Systems Performance, MDSE"
@@ -148,6 +159,7 @@ const hasPII =
         <ExperienceItem
           anchor="software-development"
           title="Bsc: Software Development"
+          link="https://itu.dk/"
           linkText="IT University of Copenhagen"
           timespan="Sep '18 – Jul '21"
           tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reactivity, Scrum, Java, JavaScript, Business Processes, HTML"
@@ -175,10 +187,13 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
           >
           </div>
-          <h2 id="experience" class="block w-full text-2xl pt-6 pb-2">
+          <h2
+            id="experience"
+            class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
+          >
             Experience
           </h2>
         </div>
@@ -213,7 +228,7 @@ const hasPII =
             students get through the courses.
           </p><p>
             I have been a teaching assistant for 7 courses:
-            <ul class="">
+            <ul class="list-disc sm:list-none pl-6 sm:pl-0">
               <li class="flex-shrink-0" title="Jan - Jul '20">
                 <span class="font-bold">Algorithms and Data Structures</span> teaching
                 theoretical worst-case performance of sorting and such,
@@ -265,10 +280,13 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
           >
           </div>
-          <h2 id="projects" class="block w-full text-2xl pt-6 pb-2">
+          <h2
+            id="projects"
+            class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
+          >
             Projects
           </h2>
         </div>
@@ -276,7 +294,6 @@ const hasPII =
           title="Tile Game"
           anchor="tile-game"
           link="https://tile-game.simon-green.dev"
-          linkText="tile-game.simon-green.dev"
           tags="Vue, Express, WebSockets, Tailwind"
         >
           <p>
@@ -293,7 +310,6 @@ const hasPII =
           anchor="color-picker"
           title="Color Picker"
           link="https://color-picker.simon-green.dev"
-          linkText="color-picker.simon-green.dev"
           tags="JavaScript, Web"
         >
           <p>
@@ -308,7 +324,7 @@ const hasPII =
           title="Kat: A Kattis Helper"
           link="https://github.com/Duckapple/Kat"
           linkText="Kat on GitHub"
-          tags="Python, Competitive Programming"
+          tags="Python, CLI, Competitive Programming"
         >
           <p>
             Kat is a tool for retrieveing, testing and submitting problems to
@@ -323,10 +339,12 @@ const hasPII =
       <section>
         <div class="flex">
           <div
-            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4"
+            class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
           >
           </div>
-          <h2 id="hobbies" class="block w-full text-2xl pt-6 pb-2">Hobbies</h2>
+          <h2 id="hobbies" class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0">
+            Hobbies
+          </h2>
         </div>
         <ExperienceItem anchor="coffee" title="Coffee" hidden>
           <p>
@@ -335,7 +353,11 @@ const hasPII =
             espresso machine with a steamer is closer to a need than a want.
           </p>
         </ExperienceItem>
-        <ExperienceItem anchor="bouldering" title="Bouldering">
+        <ExperienceItem
+          anchor="bouldering"
+          title="Bouldering"
+          tags="Problem Solving, Fitness"
+        >
           <p>
             I go bouldering with my mates about once a week, primarily at
             Boulders Sydhavnen. We also gathered up a bunch of us in the Summer
@@ -344,11 +366,15 @@ const hasPII =
             climbing, which I'm looking forward to doing more.
           </p>
         </ExperienceItem>
-        <ExperienceItem anchor="keyboards" title="Keyboards">
+        <ExperienceItem
+          anchor="keyboards"
+          title="Keyboards"
+          tags="Electronics, CAD, Design"
+        >
           <p class="pb-1">
             I have spent a lot of time tweaking and perfecting the
-            functionality, look, and feel, of my black-and-gray split ergonomic
-            keyboard, based on the Dactyl-Manuform. <!-- Built with lubed and filmed
+            functionality, look, and feel, of my homemade black-and-gray split
+            ergonomic keyboard, based on the Dactyl-Manuform. <!-- Built with lubed and filmed
             Kailh Palias, adorned with blank DSA-profile keycaps, and with an
             inbuild trackball for light navigation while using it, all
             hand-soldered with wires and diodes, this keyboard is my dream
@@ -363,7 +389,11 @@ const hasPII =
             possesion...
           </aside>
         </ExperienceItem>
-        <ExperienceItem anchor="3d-printing" title="3D Printing">
+        <ExperienceItem
+          anchor="3d-printing"
+          title="3D Printing"
+          tags="CAD, Design, Painting"
+        >
           <p>
             I have an Ender 3 at home I have used to print the aforementioned
             split ergo keyboard, <!-- my miniature paint holder, a friend's board
@@ -373,9 +403,9 @@ const hasPII =
             is so empowering.
           </p>
         </ExperienceItem>
-        <div class="flex">
+        <div class="flex px-2 sm:px-0">
           <div
-            class="sm:w-64 px-4 pb-6 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 mr-4 text-right"
+            class="sm:w-64 sm:px-4 pb-6 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4 text-right"
           >
           </div>
           <div class="flex flex-col">
@@ -395,5 +425,15 @@ const hasPII =
       </section>
     </main>
     <Footer />
+    <script>
+      const infoElement = document.getElementById("info");
+      function setOpen() {
+        const clientWidth = document.body.clientWidth;
+        const sm = 640;
+        infoElement.open = clientWidth > sm;
+      }
+      window.addEventListener("resize", setOpen);
+      setOpen();
+    </script>
   </body>
 </html>

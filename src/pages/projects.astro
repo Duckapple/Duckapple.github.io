@@ -1,0 +1,45 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Link from "../components/Link.astro";
+import { SITE_TITLE } from "../config";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={"Projects | " + SITE_TITLE}
+      description="A collection of all my projects, both past and present."
+    />
+  </head>
+  <body
+    class="min-h-screen md:flex print:flex flex-col items-center dark:bg-zinc-800"
+  >
+    <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />
+    <main class="md:max-w-6xl py-2 p-2 md:p-4 print:py-0">
+      <h1 class="text-4xl sm:pt-2 pb-2 print:pt-2">Projects</h1>
+      <code>// TODO: Add information</code>
+      <ul class="list-disc pl-6">
+        <li>
+          <Link
+            href="https://github.com/Jakobis/vscoqComparison/blob/main/Expanding_Coq_with_Type_Aware_Code_Completion.pdf"
+          >
+            Type-Aware Code Completion for Coq in VsCoq2
+          </Link>
+        </li>
+        <li><Link href="https://github.com/Duckapple/Kat">Kat CLI</Link></li>
+        <li>
+          <Link href="https://tile-game.simon-green.dev/">
+            Untitled Tile Game (Azul)
+          </Link>
+        </li>
+        <li>
+          <Link href="https://color-picker.simon-green.dev">Color Picker</Link>
+        </li>
+        <li>Meme Game</li>
+        <li>Keyboard</li>
+      </ul>
+    </main>
+  </body>
+</html>
