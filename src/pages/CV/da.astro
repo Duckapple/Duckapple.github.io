@@ -1,10 +1,10 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE } from "../config";
-import Link from "../components/Link.astro";
-import ExperienceItem from "../components/ExperienceItem.astro";
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE_TITLE } from "../../config";
+import Link from "../../components/Link.astro";
+import ExperienceItem from "../../components/ExperienceItem.astro";
 
 const bd = Math.floor(
   (new Date().valueOf() - new Date("1999-03-16").valueOf()) /
@@ -16,12 +16,12 @@ const hasPII =
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="da">
   <head>
     <BaseHead
       title={"CV | " + SITE_TITLE}
       description={bd +
-        " y/o full-stack dev from Denmark, cand.scient in Computer Science, coffee lover"}
+        "-årig full-stack udvikler fra Danmark, cand.scient i Datalogi, kaffe-elsker"}
     />
   </head>
   <body
@@ -35,16 +35,16 @@ const hasPII =
             Simon Green Kristensen
           </h1>
           <p class="sm:pl-4">
-            Full-stack engineer with a Master's in Computer Science and 2 years
-            of part-time, startup experience. I enjoy working with new and
-            exciting web technologies, but have experience with TypeScript,
-            React and TailwindCSS. I am adaptable and a fast learner, which
-            helps me find problems in my own and other's code before actual
-            problems show up. I love developing ways to make life easier for
-            myself and others, which usually leads me to software analysis and
-            web development projects. I have spent a lot of time honing my
-            skills with hobby projects, which includes a command-line tool for
-            competitive programming and web-based games.
+            Full-stack softwareudvikler med en kandidat i Datalogi og 2 års
+            deltidserfaring i et startup og 1½ som lærerassistent. Jeg kan godt
+            lide at arbejde med nye og spændende web-teknologier, men har mest
+            erfaring med TypeScript, React og TailwindCSS. Jeg lærer hurtigt,
+            hvilket hjælper mig med at finde fejl i kode inden problemer dukker
+            op. Jeg elsker at udvikle værktøjer der gør livet lettere for mig
+            selv og andre, hvilket typisk har ledt mig til softwareanalyse- og
+            webudviklingsprojekter. Jeg har brugt en del tid på at hone mine
+            evner med hobbyprojekter, herunder web-baserede spil og et
+            CLI-værktøj lavet til kompetitiv programmering.
           </p>
         </div>
         <details
@@ -53,7 +53,7 @@ const hasPII =
           class="flex flex-col sm:px-4 pt-4 w-full sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 print:pt-2"
         >
           <summary class="font-bold cursor-pointer sm:hidden"
-            >Contact info and links</summary
+            >Kontaktinfo og links</summary
           >
           <a
             class="text-lime-700 dark:text-lime-300 hover:underline"
@@ -94,7 +94,7 @@ const hasPII =
             class="print:tracking-tight"
             fallback="simon-green.dev/projects"
           >
-            {"Projects"}
+            {"Projekter"}
           </Link>
         </details>
       </div>
@@ -108,78 +108,79 @@ const hasPII =
             id="education"
             class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
           >
-            Education
+            Uddannelse
           </h2>
         </div>
         <ExperienceItem
           anchor="computer-science"
-          title="Msc: Computer Science (Software Analysis)"
+          title="Msc: Datalogi (Softwareanalyse)"
           link="https://itu.dk/"
-          linkText="IT University of Copenhagen"
+          linkText="IT-Universitetet i København"
           timespan="Sep '21 – Jul '23"
-          tags="Coq, Formal Verification, Scala, Software Analysis, Idris, OCaml, C++, Electronics, Systems Performance, MDSE"
+          tags="Coq, Formel Verficering, Scala, Softwareanalyse, Idris, OCaml, C++, Elektronik, Systems Performance, MDSE"
         >
           <p class="pb-2">
-            During my studies, I took courses on software analysis, the art of
-            trying to find errors and problems in programs via analysis, which
-            often involves new and exciting type systems. These include Program
-            Verification, Advanced Software Analysis, and Modelling Systems
-            Languages, as well as a research project and the thesis.
+            Under mine studier tog jeg kurser i softwareanalyse, kunsten i at
+            prøve at finde fejl og problemer i programmer via analyse, hvilket
+            ofte involverer nye og spændende typesystemer. Dette inkluderer
+            Program Verification, Advanced Software Analysis og Modelling
+            Systems Languages, såvel som et research-projekt og
+            kandidatspecialet.
           </p>
           <p class="pb-2">
-            The thesis itself was about providing a code completion/suggestion
-            ranking algorithm for the formal verification system Coq. The type
-            system for Coq is very expansive, which provides opportunities for
-            more specific suggestions, at the cost of low performance due to
-            having to compare types. Our work can be found on <Link
+            Selve specialet handlede om at lave en forslagsalgoritme til Coq, et
+            sprog brugt til formel verificering. Typesystemet i Coq er meget
+            finkornet, hvilket giver mulighed for at fremskaffe mere specifikke
+            forslag end "normale" sprog, på bekostning af hastighed grundet
+            sammenligning af typer. Vores arbejde kan findes på <Link
               href="https://github.com/coq-community/vscoq"
             >
-              {"the VSCoq project"}
+              {"VSCoq-projektet"}
             </Link>.
           </p>
           <p>
-            Other cool courses:
+            Andre fede kurser:
             <ul class="list-disc pl-6">
               <li>
-                How to Make Almost Anything; had fun learning about prototyping
-                physical products and robots.
+                How to Make Almost Anything; havde det sjovt med at prototype
+                fysiske produkter og robotter.
               </li>
               <li>
-                Game Programming; taught me C++ and matrix operations, as well
-                as Entity Component Systems and other game engine tricks.
+                Game Programming; lærte mig C++ og matriceoperationer, såvel som
+                Entity Component Systems og andre tricks til at udvikle spil.
               </li>
               <li>
-                Computer Systems Performance; didn't learn how to improve
-                performance, but rather how to measure performance, as well as
-                how the hardware works.
+                Computer Systems Performance; lærte ikke om hvordan ydeevne
+                forbedres,men rettere hvordan man måler ydeevne, samt hvordan
+                hardware fungerer.
               </li>
             </ul>
           </p>
         </ExperienceItem>
         <ExperienceItem
           anchor="software-development"
-          title="Bsc: Software Development"
+          title="Bsc: Softwareudvikling"
           link="https://itu.dk/"
-          linkText="IT University of Copenhagen"
+          linkText="IT-Universitetet i København"
           timespan="Sep '18 – Jul '21"
-          tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reactivity, Scrum, Java, JavaScript, Business Processes, HTML"
+          tags="C#, .NET, TypeScript, Web Design, CSS, C, SQL, Multithreading, Reaktivitet, Scrum, Java, JavaScript, Business Processes, HTML"
         >
           <p class="pb-2">
-            Learned to program in multiple languages and paradigms using
-            different design patterns. This was combined with courses on team
-            collaboration, preliminary analysis, DevOps, design, and more.
+            Lærte at programmere i flere sprog og paradigmer ved hjælp af
+            diverse designmønstre. Dette var kombineret med kurser om samarbejde
+            i teams, forhåndsanalyser, DevOps, design mm.
           </p>
           <p class="pb-2">
-            One of my favourite courses was Programs As Data. Getting into the
-            internals of compilers and interpreters was exciting, especially
-            seeing how to perform operations on the syntax tree and optimising
-            languages.
+            Et af mine yndlingskurser var Programmer som Data. At komme ind i
+            indmaden på compilere og interpreters var spændende, specielt at se
+            hvordan man laver operationer på syntakstræet og hvordan sprog
+            optimeres.
           </p>
           <p>
-            My final project was on creating an imperative-style programming
-            language with reactive elements. Together with my mate Jonas
-            Lindenskov, we implemented the language in C#, creating a neat proof
-            of concept. It is accessible on our Github Organisation
+            Mit bachelorprojekt handlede om at lave et imperativt
+            programmeringssprog med reaktive elementer. Sammen med min ven Jonas
+            Lindenskov implementerede vi sproget i C#, og lavede derved en fed
+            prototype. Det er tilgængeligt på vores Github Organisation
             <Link href="https://github.com/jolnsigkitu">jolnsigkitu</Link>.
           </p>
         </ExperienceItem>
@@ -194,86 +195,87 @@ const hasPII =
             id="experience"
             class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
           >
-            Experience
+            Erfaring
           </h2>
         </div>
         <ExperienceItem
           anchor="firmnav"
-          title="Full-Stack Software Developer"
+          title="Full-Stack Softwareudvikler"
           link="https://firmnav.com/"
           linkText="Firmnav"
           timespan="Jul '20 – Jul '22"
           tags="TypeScript, React, Tailwind, GraphQL, PostgreSQL, NodeJS, Express, Pulumi, TypeORM, DevOps, Docker, DigitalOcean, S3"
         >
           <p>
-            Firmnav creates AI-powered data aggregations and predictions, but
-            used to be a company database and search engine when I worked there.
-            My role was full-stack software development on a fin-tech SaaS
-            TypeScript web app with Express backend and NodeJS pipeline. I was
-            responsible for benchmark visualisations, HubSpot and SalesForce CRM
-            integrations, data layout selector, company relationship
-            visualisations, and general platform improvements and bug fixes.
+            Firmnav laver data-aggregering og forudsigelser via AI, men var en
+            virksomheds-søgemaskine og -database da jeg arbejdede der. Min rolle
+            var full-stack softwaresoftwareudvikling på en fin-tech SaaS
+            TypeScript web app med en Express backend og NodeJS pipeline. Jeg
+            var ansvarlig for features som benchmark-visualisering, HubSpot and
+            SalesForce CRM-integrationer, data layout vælger, visualisering af
+            firmarelationer, og generelle forbedringer til platformen.
           </p>
         </ExperienceItem>
         <ExperienceItem
           anchor="teaching-assistant"
-          title="Teaching Assistant"
+          title="Lærerassistent"
           link="https://itu.dk/"
-          linkText="IT University of Copenhagen"
+          linkText="IT-Universitetet i København"
           timespan="Jan – Dec '20 and Sep '22 – Jul '23"
-          tags="Algorithms, Web, JS, CSS, HTML, Networking, Java, Python, Scala, F#, AI"
+          tags="Algoritmer, Web, JS, CSS, HTML, Netværk, Java, Python, Scala, F#, AI"
         >
           <p class="pb-2">
-            I have led exercise classes, corrected assignments, and helped
-            students get through the courses.
+            Jeg har ledt øvelsestimer, rettet afleveringer, og hjulpet
+            studerende med at komme gennem kurserne.
           </p><p>
-            I have been a teaching assistant for 7 courses:
+            Jeg har været tilknyttet 7 kurser:
             <ul class="list-disc sm:list-none pl-6 sm:pl-0">
               <li class="flex-shrink-0" title="Jan - Jul '20">
-                <span class="font-bold">Algorithms and Data Structures</span> teaching
-                theoretical worst-case performance of sorting and such,
+                <span class="font-bold">Algoritmer og Datastrukturer</span> som handlede
+                om teoretiske køretider af sortering og søgning,
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '20">
                 <span class="font-bold"
-                  >Systematic Design of User Interfaces</span
-                > teaching about web design and technologies,
+                  >Systematisk Design af Brugergrænseflader</span
+                > som handlede om web-design og web-teknologier,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '20">
-                <span class="font-bold">Mobile and Distributed Systems</span> teaching
-                networking and threading with Java,
+                <span class="font-bold">Mobile og Distribuerede Systemer</span> som
+                handlede om netværk og tråde i Java,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '22">
-                <span class="font-bold">Algorithm Design</span> teaching about dynamic
-                programming, min-cut max-flow, and whether P = NP,
+                <span class="font-bold">Algorithm Design</span> som handlede om dynamisk
+                programmering, min-cut max-flow, og om P = NP,
               </li>
               <li class="flex-shrink-0" title="Seb - Dec '22">
-                <span class="font-bold">Advanced Programming</span> teaching about
-                Monads in 7 different ways in Scala,
+                <span class="font-bold">Advanced Programming</span> som handlede
+                om 7 slags monader i Scala,
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '23">
-                <span class="font-bold">Functional Programming</span> teaching functional
-                programming with F#, and
+                <span class="font-bold">Funktionel Programmering</span> som handlede
+                om railway-programming i F#, and
               </li>
               <li class="flex-shrink-0" title="Jan - Jul '23">
                 <span class="font-bold"
                   >Introduction to Artificial Intelligence</span
-                > teaching &alpha;&beta;-minimax, binary decision diagrams, etc.
+                > som handlede om &alpha;&beta;-minimax, binary decision diagrammer.
               </li>
             </ul>
           </p>
         </ExperienceItem>
         <ExperienceItem
           anchor="analog-barista"
-          title="Volunteer Barista"
+          title="Frivillig Barista"
           link="https://cafeanalog.dk/"
           linkText="Café Analog"
           timespan="Sep '22 – Jul '23"
-          tags="Espresso, Latte, Board Games"
+          tags="Espresso, Latte, Brætspil"
         >
           <p>
-            I volunteered as a barista at the student café at my university,
-            both to learn more about coffee and to get to know more of my fellow
-            students.
+            Jeg var frivillig barista i studentercafeen på min universitet, både
+            for at lære mere om kaffe og lære mine medstuderende at kende. Jeg
+            blev tildelt "Barista of the Semester" for at være ekstraordinært
+            hjælpsom og dele mit gode humør med de andre baristaer.
           </p>
         </ExperienceItem>
       </section>
@@ -287,7 +289,7 @@ const hasPII =
             id="projects"
             class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0"
           >
-            Projects
+            Projekter
           </h2>
         </div>
         <ExperienceItem
@@ -297,13 +299,13 @@ const hasPII =
           tags="Vue, Express, WebSockets, Tailwind"
         >
           <p>
-            I made a web-based implementation of the board game <Link
+            Jeg lavede en web-baseret implementation af brætspillet <Link
               href="https://boardgamegeek.com/boardgame/230802/azul"
               fallback="Azul"
             >
               {"Azul"}
-            </Link>. It is implemented with Vue and Express, using WebSockets
-            for communication between players and the server.
+            </Link>. Det er implementeret med Vue og Express, og bruger
+            WebSockets til kommunikation mellem serveren og spillerne.
           </p>
         </ExperienceItem>
         <ExperienceItem
@@ -313,25 +315,25 @@ const hasPII =
           tags="JavaScript, Web"
         >
           <p>
-            I wanted to be able to extract the colors used in my favourite text
-            editor theme, and therefore I made this little tool. It accepts a
-            text snippet, and attempts to extract all colors used in the text,
-            using small swatches to display them to the user.
+            Jeg ville gerne kunne hive farverne ud af mit yndlings editor-tema,
+            og til det lavede jeg dette værktøj. Det tager mod en bid tekst og
+            forsøger at hive alle farvekoder ud af teksten, og bruger små
+            swatches til at vise dem til brugeren.
           </p>
         </ExperienceItem>
         <ExperienceItem
           anchor="kat"
-          title="Kat: A Kattis Helper"
+          title="Kat: Hjælp til Kattis"
           link="https://github.com/Duckapple/Kat"
-          linkText="Kat on GitHub"
-          tags="Python, CLI, Competitive Programming"
+          linkText="Kat på GitHub"
+          tags="Python, CLI, Kompetitiv Programmering"
         >
           <p>
-            Kat is a tool for retrieveing, testing and submitting problems to
-            <Link href="https://open.kattis.com">Kattis</Link>, a code challenge
-            platform. It can help in getting contest data, organises your
-            solutions, and helps you in helping yourself troubleshoot your
-            solutions by running your own fuzzers.
+            Kat er et værktøj til at hente, teste og aflevere problemer til
+            <Link href="https://open.kattis.com">Kattis</Link>, en platform til
+            kode-problemer. Kat kan hente information om konkurrencer,
+            organiserer dine løsninger, og hjælper dig med at oprette og køre
+            fuzzere på dine løsninger.
           </p>
         </ExperienceItem>
         <!-- Markdown Tables, Coq Suggestions -->
@@ -343,10 +345,10 @@ const hasPII =
           >
           </div>
           <h2 id="hobbies" class="block w-full text-2xl pt-6 pb-2 px-2 sm:px-0">
-            Hobbies
+            Hobbier
           </h2>
         </div>
-        <ExperienceItem anchor="coffee" title="Coffee" hidden>
+        <ExperienceItem anchor="coffee" title="Kaffe" hidden>
           <p>
             I love the taste of coffee, I love the process of making coffee, I
             simply love coffee. If you'd like to work with me, then an actual
@@ -356,51 +358,50 @@ const hasPII =
         <ExperienceItem
           anchor="bouldering"
           title="Bouldering"
-          tags="Problem Solving, Fitness"
+          tags="Problemløsning, Fitness"
         >
           <p>
-            I go bouldering with my mates about once a week, primarily at
-            Boulders Sydhavnen. We also gathered up a bunch of us in the Summer
-            of '22 and went to Kjugekull, Sweden, where we climbed on actual
-            boulders. I went with the same crew to get certified for top-rope
-            climbing, which I'm looking forward to doing more.
+            Jeg klatrer med mine venner en gang om ugen, primært hos Boulders
+            Sydhavnen. Vi samlede os også i sommeren '22 og tog til Kjugekull,
+            Sverige, hvor vi klatrede på rigtige kampesten. Jeg tog med det
+            samme slæng ud for at blive certificeret i sikring af topreb, som
+            jeg også glæder mig til at gøre mere af.
           </p>
         </ExperienceItem>
         <ExperienceItem
           anchor="keyboards"
           title="Keyboards"
-          tags="Electronics, CAD, Design"
+          tags="Elektronik, CAD, Design"
         >
           <p class="pb-1">
-            I have spent a lot of time tweaking and perfecting the
-            functionality, look, and feel, of my homemade black-and-gray split
-            ergonomic keyboard, based on the Dactyl-Manuform. <!-- Built with lubed and filmed
+            Jeg har brugt meget tid på at færdiggøre og forbedre
+            funktionaliteten, udseendet og følingen på mit hjemmelave sorte og
+            grå split-ergonomiske keyboard som er baseret på Dactyl-Manuform. <!-- Built with lubed and filmed
             Kailh Palias, adorned with blank DSA-profile keycaps, and with an
             inbuild trackball for light navigation while using it, all
             hand-soldered with wires and diodes, this keyboard is my dream
             build. -->
             <br />
-            It is not finished yet, but it will be Soon&trade;.
+            Kun halvdelen er færdig indtil videre, men det er færdigt Snart&trade;.
           </p>
           <aside class={aside}>
-            Can you call it a hobby if you only have 1.5 keyboards?
+            Kan man kalde det en hobby hvis jeg kun har 1.5 keyboards?
             <br />
-            I suppose non-hobbyists would have a whole number of keyboards in their
-            possesion...
+            Tja, ikke-hobbyister ville nok eje et lige antal keybords...
           </aside>
         </ExperienceItem>
         <ExperienceItem
           anchor="3d-printing"
-          title="3D Printing"
-          tags="CAD, Design, Manufacturing"
+          title="3D-Print"
+          tags="CAD, Design, Fremstilling"
         >
           <p>
-            I have an Ender 3 at home I have used to print the aforementioned
+            Jeg har en Ender 3 jeg har brugt til at printe tidligere nævnte
             split ergo keyboard, <!-- my miniature paint holder, a friend's board
             game organizer, -->
-            among many other nice things and doodads. Being able to design something,
-            and then immediately be able to make a version I can hold in my hand,
-            is so empowering.
+            samt mange andre ting og himstregimser. Det er tilfredsstillende at kunne
+            designe noget, og med det samme kunne lave en version jeg holder i min
+            hule hånd.
           </p>
         </ExperienceItem>
         <div class="flex px-2 sm:px-0">
@@ -410,15 +411,15 @@ const hasPII =
           </div>
           <div class="flex flex-col">
             <div>
-              <h3 class="text-xl inline">Interests Lightning Round</h3>
+              <h3 class="text-xl inline">Interesser: Lyn-runde</h3>
               <span class={aside}>
-                &ndash; would take up too much space otherwise</span
+                &ndash; ellers ville det fylde for meget</span
               >
             </div>
             <p>
-              Board games, Electronic music, Electronics tinkering, Dancing at
-              parties, Video games, Cooking, Competitive Programming, Game
-              Development, Math
+              Brætspil, Elektronisk Musik, Lege med elektronik, Danse til
+              fester, Videospil, Madlavning, Kompetitiv Programmering,
+              Spiludvikling, Fysik og Matematik
             </p>
           </div>
         </div>
