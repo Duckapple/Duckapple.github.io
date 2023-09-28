@@ -13,7 +13,7 @@ import Link from "../components/Link.astro";
       description="Full-stack dev from Denmark, cand.scient in Computer Science, coffee lover"
     />
   </head>
-  <body class="min-h-screen dark:bg-zinc-800 font-sans">
+  <body class="min-h-screen dark:bg-zinc-800 font-sans flex flex-col">
     <div class="flex flex-col sm:flex-row justify-center pb-4">
       <div class="py-4 w-full flex justify-center sm:w-auto sm:p-24">
         <div class="w-64 h-64 sm:w-80 sm:h-80">
@@ -59,9 +59,20 @@ import Link from "../components/Link.astro";
     <div class="flex justify-center">
       <a
         href="/CV"
-        class="px-6 py-3 rounded-lg bg-gradient-to-br from-lime-500 to-lime-600 text-white text-xl cursor-pointer"
+        class="px-12 py-6 rounded-2xl bg-gradient-to-br from-lime-500 to-lime-600 text-white text-3xl cursor-pointer hover:from-lime-600 hover:to-lime-700 transition-colors"
       >
         Check out my CV!
+      </a>
+    </div>
+    <div class="flex flex-col justify-center items-center p-24 text-3xl">
+      <p class="mb-4">Currently employed at</p>
+      <a
+        href="https://unhaze.ai"
+        rel="external noreferrer"
+        target="_blank"
+        class="hover:scale-110 transition"
+      >
+        <img src="/unhaze-logo.svg" alt="Unhaze Logo" class="h-32" />
       </a>
     </div>
     <Footer />
