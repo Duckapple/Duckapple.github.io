@@ -43,11 +43,4 @@ const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<script
-  type="module"
-  src="https://cdn.unhaze.ai/unhaze-engagement.js"
-  async
-  is:raw
-  data-unhaze-key="SF-QA-ehtdBE%HHFGSR%$$"></script>
-
 <ViewTransitions />
