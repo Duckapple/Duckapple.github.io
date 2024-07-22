@@ -15,7 +15,7 @@ const hasPII =
   !!import.meta.env.PUBLIC_TELEPHONE && !!import.meta.env.PUBLIC_ADDRESS;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead
@@ -28,7 +28,7 @@ const hasPII =
     class="min-h-screen md:flex print:flex flex-col items-center dark:bg-zinc-800"
   >
     <Header title={SITE_TITLE} class="md:max-w-6xl px-4 print:hidden" />
-    <main class="md:max-w-6xl py-2 md:p-4 print:py-0">
+    <main class="md:max-w-6xl py-2 md:p-4 print:py-0 flex flex-col">
       <div class="md:flex print:flex flex-col sm:flex-row-reverse px-2 sm:px-0">
         <div>
           <h1 class="text-4xl sm:pt-2 pb-2 sm:pl-4 print:pt-2">
@@ -98,7 +98,7 @@ const hasPII =
           </Link>
         </details>
       </div>
-      <section>
+      <section class="order-2">
         <div class="flex">
           <div
             class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
@@ -184,7 +184,7 @@ const hasPII =
           </p>
         </ExperienceItem>
       </section>
-      <section>
+      <section class="order-1">
         <div class="flex">
           <div
             class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
@@ -206,13 +206,47 @@ const hasPII =
           tags="TypeScript, React, Tailwind, GraphQL, PostgreSQL, NodeJS, Express, Pulumi, TypeORM, DevOps, Docker, DigitalOcean, S3"
         >
           <p>
-            Firmnav creates AI-powered data aggregations and predictions, but
-            used to be a company database and search engine when I worked there.
-            My role was full-stack software development on a fin-tech SaaS
-            TypeScript web app with Express backend and NodeJS pipeline. I was
-            responsible for benchmark visualisations, HubSpot and SalesForce CRM
-            integrations, data layout selector, company relationship
+            Firmnav was a company database and search engine when I worked
+            there. My role was full-stack software development on a fin-tech
+            SaaS TypeScript web app with Express backend and NodeJS pipeline. I
+            was responsible for benchmark visualisations, HubSpot and SalesForce
+            CRM integrations, data layout selector, company relationship
             visualisations, and general platform improvements and bug fixes.
+          </p>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="unhaze"
+          title="Full-Stack Software Developer"
+          link="https://unhaze.ai/"
+          linkText="Unhaze"
+          timespan="Sep '23 – Apr '24"
+          tags="TypeScript, React, Tailwind, tRPC, PostgreSQL, NodeJS, Express, Pulumi, Prisma, Drizzle, DevOps, DBT, Mage.ai, Docker, S3, SFDC, HubSpot"
+        >
+          <p>
+            Unhaze was a platform for lead generation and prioritization based
+            on the companies in your CRM. As a full-stack developer, I was
+            responsible for every part except the machine learning models:
+            frontend, backend, database maintenance, CRM integrations, data
+            engineering, and DevOps. We managed to create a banger product and
+            amazing team-work, but we were unfortunately trying to compete in a
+            market that got saturated around us.
+          </p>
+        </ExperienceItem>
+        <ExperienceItem
+          anchor="ocean"
+          title="Full-Stack Software Developer"
+          link="https://ocean.io/"
+          linkText="Ocean.io"
+          timespan="May '24 – Now"
+          tags="TypeScript, React, Tailwind, NextJS, Svelte, Astro, MobX, Go, Python, SFDC, HubSpot"
+        >
+          <p>
+            Ocean.io is a platform for finding best-fit customers for your B2B
+            sales, and for finding contact information of the right people to
+            contact. I am primarily working on the frontend, but I also am
+            getting into the backend in Python and Go. So far, I have been
+            responsible for implementing a re-design of the company info
+            sidebar, and for tracking down and squashing bugs.
           </p>
         </ExperienceItem>
         <ExperienceItem
@@ -223,7 +257,7 @@ const hasPII =
           timespan="Jan – Dec '20 and Sep '22 – Jul '23"
           tags="Algorithms, Web, JS, CSS, HTML, Networking, Java, Python, Scala, F#, AI"
         >
-          <p class="pb-2">
+          <p class="pb-2 inline-block" slot="summary">
             I have led exercise classes, corrected assignments, and helped
             students get through the courses.
           </p><p>
@@ -277,7 +311,7 @@ const hasPII =
           </p>
         </ExperienceItem>
       </section>
-      <section>
+      <section class="order-3">
         <div class="flex">
           <div
             class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
@@ -336,7 +370,7 @@ const hasPII =
         </ExperienceItem>
         <!-- Markdown Tables, Coq Suggestions -->
       </section>
-      <section>
+      <section class="order-4">
         <div class="flex">
           <div
             class="sm:w-64 flex-shrink-0 sm:bg-lime-50 sm:dark:bg-lime-900 sm:mr-4"
@@ -426,11 +460,13 @@ const hasPII =
     </main>
     <Footer />
     <script>
-      const infoElement = document.getElementById("info");
+      const infoElement = document.getElementById(
+        "info"
+      ) as HTMLDetailsElement | null;
       function setOpen() {
         const clientWidth = document.body.clientWidth;
         const sm = 640;
-        infoElement.open = clientWidth > sm;
+        infoElement && (infoElement.open = clientWidth > sm);
       }
       window.addEventListener("resize", setOpen);
       setOpen();
