@@ -3,9 +3,10 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, GREEN_STYLE } from "../config";
 import Link from "../components/Link.astro";
+import OceanLogo from "./ocean_logo.svg?raw";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <BaseHead
@@ -70,9 +71,9 @@ import Link from "../components/Link.astro";
         href="https://ocean.io"
         rel="external noreferrer"
         target="_blank"
-        class="hover:scale-110 transition"
+        class="hover:scale-110 transition h-32 text-slate-800 dark:text-slate-200"
       >
-        <img src="/ocean_logo.svg" alt="Ocean.io Logo" class="h-32" />
+        <Fragment set:html={OceanLogo} />
       </a>
     </div>
     <Footer />
