@@ -1,6 +1,12 @@
 {
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "$layouts/*": ["src/layouts/*"],
+      "$components/*": ["src/components/*"]
+    }
   }
 }

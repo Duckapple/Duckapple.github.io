@@ -2,8 +2,9 @@
 export interface Props {
   datetime: string;
   noArity?: boolean;
+  class?: string;
 }
-const { datetime, noArity } = Astro.props;
+const { datetime, noArity, class: cn } = Astro.props;
 const [year, month, day] = datetime.split("-").map(Number);
 if (!month) throw Error("Invalid date provided: " + datetime);
 const months = [
@@ -27,9 +28,8 @@ const mod = (day ?? 0) % 10;
 const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
 ---
 
-<time datetime={datetime}>
+<time datetime={datetime} class={cn}>
   {months[month]}{" "}
-  {day}
-  {!noArity && <sup>{arity}</sup>},
+  {day}{!noArity && <sup>{arity}</sup>},
   {year}
 </time>
