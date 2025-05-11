@@ -28,10 +28,8 @@ const arity = mod === 1 ? "st" : mod === 2 ? "nd" : mod === 3 ? "rd" : "th";
 ---
 
 <time datetime={datetime}>
-  {months[month]}
-  <>
-    {day}
-    {!noArity && <sup>{arity}</sup>},
-  </>
+  {months[month]}{" "}
+  {day}
+  {!noArity && <sup>{arity}</sup>},
   {year}
 </time>

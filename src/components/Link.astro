@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 
 export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   fallback?: string;
@@ -31,7 +31,10 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, "");
     class="hidden print:inline">{fallback ?? href}</span
   >{
     isExt && !noIcon && (
-      <Icon class="print:hidden h-4 inline ml-1 -mt-1" name="mdi:open-in-new" />
+      <Icon
+        class="print:hidden size-4 inline ml-1 -mt-1"
+        name="mdi:open-in-new"
+      />
     )
   }</a
 >

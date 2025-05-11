@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { GREEN_STYLE } from "../config";
 import HeaderLink from "./HeaderLink.astro";
 const { class: className } = Astro.props;
@@ -16,21 +16,28 @@ const { class: className } = Astro.props;
     class={"my-2 inline uppercase text-2xl hover:-from-30% hover:to-70% " +
       GREEN_STYLE}>Green</a
   >
-  <nav class="flex">
+  <nav class="flex text-base">
     <HeaderLink class="flex-grow" href="/">Home</HeaderLink>
     <!-- <HeaderLink href="/blog">Blog</HeaderLink>
     <HeaderLink href="/about">About</HeaderLink> -->
     <HeaderLink href="/CV">CV</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
     <a href="https://www.linkedin.com/in/simon-g-k/" class="px-2">
       <Icon
-        name="mdi:linkedin"
-        class="h-8 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
+        name="simple-icons:linkedin"
+        class="size-6 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
       />
     </a>
-    <a href="https://github.com/Duckapple" class="pl-2">
+    <a href="https://github.com/Duckapple" class="px-2">
       <Icon
-        name="mdi:github"
-        class="h-8 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
+        name="simple-icons:github"
+        class="size-6 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
+      />
+    </a>
+    <a href="https://bsky.app/profile/simon-green.dev" class="pl-2">
+      <Icon
+        name="simple-icons:bluesky"
+        class="size-6 inline text-lime-700 dark:text-lime-300 hover:text-lime-600 dark:hover:text-lime-500"
       />
     </a>
   </nav>

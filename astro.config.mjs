@@ -1,12 +1,10 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import icon from "astro-icon";
 
 // https://astro.build/config
 import tailwind from "@astrojs/tailwind";
-
-// https://astro.build/config
-import solidJs from "@astrojs/solid-js";
 
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
@@ -20,7 +18,7 @@ import { remarkSpoilerParser } from "./src/remark-rehype-plug";
 // https://astro.build/config
 export default defineConfig({
   site: "https://simon-green.dev",
-  integrations: [mdx(), sitemap(), tailwind(), solidJs()],
+  integrations: [mdx(), sitemap(), tailwind(), icon()],
   markdown: {
     remarkPlugins: [remarkMath, remarkSpoilerParser],
     rehypePlugins: [
@@ -38,7 +36,7 @@ export default defineConfig({
           return state.applyData(node, {
             type: "element",
             tagName: "span",
-            properties: { className: "spoiler" },
+            properties: { className: "spoiler", "aria-label": "spoiler" },
             children: node.children,
           });
         },

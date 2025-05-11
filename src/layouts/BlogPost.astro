@@ -11,12 +11,25 @@ export interface Props {
     pubDate?: string;
     updatedDate?: string;
     heroImage?: string;
+    heroImageAlt?: string;
+    draft?: boolean;
   };
 }
 
 const {
-  content: { title, description, pubDate, updatedDate, heroImage },
+  content: {
+    title,
+    description,
+    draft,
+    pubDate,
+    updatedDate,
+    heroImage,
+    heroImageAlt,
+  },
 } = Astro.props;
+
+if (heroImage && !heroImageAlt && !draft)
+  throw new Error(`Expected alt text for hero image on blog post '${title}'`);
 ---
 
 <html lang="en">
@@ -77,16 +90,16 @@ const {
         @apply border-l border-zinc-400;
       }
       mark {
-        @apply bg-lime-400 text-black;
+        @apply bg-lime-400 text-black px-0.5;
       }
       figcaption {
-        @apply text-center;
+        @apply text-center mt-2;
       }
       .footnotes p {
         @apply inline;
       }
       .spoiler {
-        @apply text-transparent bg-zinc-600 dark:bg-zinc-200;
+        @apply text-transparent bg-zinc-600 dark:bg-zinc-200 select-all;
       }
       .spoiler:hover {
         background-color: unset;
@@ -99,7 +112,7 @@ const {
     <Header class="md:max-w-6xl m-auto px-4 print:hidden" />
     <main>
       <article class="max-w-[80ch] p-2 sm:p-5 m-auto">
-        {heroImage && <img src={heroImage} alt="" class="mb-4" />}
+        {heroImage && <img src={heroImage} alt={heroImageAlt} class="mb-4" />}
         <h1 class="2xl:text-5xl mt-2">{title}</h1>
         {pubDate && ["Published", <Time datetime={pubDate} />]}
         {updatedDate && [<br />, "Updated", <Time datetime={updatedDate} />]}
