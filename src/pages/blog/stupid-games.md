@@ -4,6 +4,7 @@ title: "Stupid games"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "2023-07-06"
 updatedDate: "2023-07-07"
+draft: true
 ---
 
 Alle de der lege, hvor man føler sig dum i 30 minutter og så går det op for en
